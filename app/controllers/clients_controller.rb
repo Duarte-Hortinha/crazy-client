@@ -1,6 +1,11 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.all
+
+    if params[:first_name].present? || params[:phone_number].present? || params[:last_name].present?
+      raise
+    else
+      @clients = Client.all
+    end
   end
 
   def show
@@ -45,5 +50,4 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client).permit(:first_name, :last_name, :phone_number,  :ccr) # added photo because of cloudinary
   end
-
 end

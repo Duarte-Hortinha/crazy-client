@@ -1,0 +1,22 @@
+<div class="container" id="bookingscont">
+  <h1>My bookings</h1>
+  <div class="container" id="mybookingscont">
+    <% if @bookings.empty? %>
+      <%= "You don't have any confirmed bookings yet." %>
+    <% else %>
+      <% @bookings.each do |booking| %>
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">
+            <h5 class="card-title"><%= booking.client.first_name %>, <strong><%= booking.client.last_name %></strong> - <%= booking.booking_start %></h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item list-group-item-light"><p> Party size: <%= booking.party_count %></p></li>
+              <li class="list-group-item list-group-item-light"><p> Comment: <%= booking.comment %></p></li>
+              <li class="list-group-item list-group-item-light"><p> Client's phone number: <%= booking.client.phone_number %></p></li>
+            </ul>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>

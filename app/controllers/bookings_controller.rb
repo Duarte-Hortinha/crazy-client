@@ -1,20 +1,21 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(restaurant: current_user)
+    @bookings = Booking.where(restaurant: current_restaurant)
   end
 
   def new
+    @client = Client.find(params[:client_id])
     @booking = Booking.new
   end
 
   def create
-    @booking.client = Client.find(params[:client_id])
     @booking = Booking.new(booking_params)
-    @booking.restaurant = current_user
+    @booking.client = Client.find(params[:client_id])
+    @booking.restaurant = current_restaurant
     if @booking.save
-      redirect_to ...  # correct, goes to show page but @meme has to yield ID
+      redirect_to bookings_path  # correct, goes to show page but @meme has to yield ID
     else
-      render ...
+      render :new, status: :unprocessable_entity
     end
   end
 
