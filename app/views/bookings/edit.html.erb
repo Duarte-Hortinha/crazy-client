@@ -1,0 +1,7 @@
+<h2>Booking for client <%= @booking.client.first_name %> <%= @booking.client.last_name %> - <%= @booking.client.phone_number%></h2><p></p>
+<%= simple_form_for @booking, data: { controller: 'datepicker' } do |f| %>
+      <%= f.input :booking_start, :label => "Date", as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
+      <%= f.input :party_count, as: :integer %>
+      <%= f.input :comment, as: :string %>
+      <%= f.submit 'Confirm this change', class:"text-decoration-none btn btn-info" %>
+<% end %>
