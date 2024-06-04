@@ -1,4 +1,6 @@
 class ClientsController < ApplicationController
+  before_action :authenticate_restaurant! # , except: :update
+
   def index
     @clients = Client.all
   end
@@ -30,11 +32,13 @@ class ClientsController < ApplicationController
     # | - going to do this default first
     # else the restaurant ...
 
-    # @restaurant = current_user # not know if this is needed (probably yes)
-    @client = @restaurant.client.find(params[:id]) # finding client to update, by ID
-    if @client.update_attributes(client_params)
-      flash[:success] = "Client succesfully updated!" #refrencing _flashes.html.erb on shared views
-      redirect_to new_client_booking_path(@client.id) # get client that was updated ID, is .id needed?
+    @restaurant = current_restaurant # not know if this is needed (probably yes)
+    @client = Client.find(params[:id]) # finding client to update, by ID
+    if @client.update(client_params)
+      # flash[:success] = "Client succesfully updated!" #refrencing _flashes.html.erb on shared views
+      flash[:notice] = "Client info succesfully updated!"
+      redirect_to root_path # to be replaced in the future
+      # redirect_to new_client_booking_path(@client.id) # get client that was updated ID, is .id needed?
     else
       render action: :edit
     end
@@ -43,7 +47,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:first_name, :last_name, :phone_number,  :ccr) # added photo because of cloudinary
+    params.require(:client).permit(:first_name, :last_name, :phone_number) # added photo because of cloudinary
   end
 
 end
