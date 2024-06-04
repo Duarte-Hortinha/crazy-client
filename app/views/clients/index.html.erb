@@ -1,7 +1,12 @@
 <h1>Clients</h1>
 
-<ul>
-  <% @clients.each do |restaurant| %>
-    <li><%= Client.name %></li>
-  <% end %>
-</ul>
+
+<div class="container">
+
+    <% @clients.each do |client| %>
+      <div class="card-category" style="">
+        <p><%= client.first_name %> <%= client.last_name %></ü>
+      </div>
+    <% end %>
+
+</div>
