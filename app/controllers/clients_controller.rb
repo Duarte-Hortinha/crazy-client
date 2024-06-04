@@ -12,6 +12,10 @@ class ClientsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+  def show
+    @client = Client.find(params[:id])
+  end
 
   private
 
