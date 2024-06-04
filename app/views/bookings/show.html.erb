@@ -1,0 +1,18 @@
+<h2>Booking info</h2>
+<div class="container">
+
+  <div class="m-4">
+    <h3><%= booking.client_id %></h3>
+    <p><%= booking.booking_start %></p>
+    <p><%= booking.booking_end %></p>
+    <p><%= booking.party_count %></p>
+    <br>
+    <p><%= booking.comment %></p>
+  </div>
+
+  <div class="m-4">
+    <p><%= link_to "Update Booking", edit_booking_path(@booking_id), class:"btn btn-info" %></p>
+    <p><%= link_to "Delete Booking", booking_path(@booking_id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p>
+  </div>
+
+</div>
