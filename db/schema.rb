@@ -10,11 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_04_092614) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_100040) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "booking_start"
+    t.datetime "booking_end"
+    t.text "comment"
+    t.integer "party_count"
+    t.bigint "restaurant_id", null: false
+    t.bigint "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_bookings_on_client_id"
+    t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.float "ccr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -22,8 +44,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_04_092614) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string "name"
+    t.float "ccr_acceptance"
+    t.integer "capacity"
+    t.index ["email"], name: "index_restaurants_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "punctuality"
+    t.text "comment"
+    t.boolean "attendance"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
+
+  add_foreign_key "bookings", "clients"
+  add_foreign_key "bookings", "restaurants"
+  add_foreign_key "reviews", "bookings"
 end
