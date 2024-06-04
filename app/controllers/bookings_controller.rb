@@ -19,9 +19,29 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    if @booking.update(booking_params)
+      flash[:success] = "Booking updated!"
+      redirect_to bookings_path
+    else
+      render action: :edit
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:booking_start, :booking_end, :party_count, :comment) # added photo because of cloudinary
+    params.require(:booking).permit(:booking_start, :party_count, :comment) # added photo because of cloudinary
   end
 end

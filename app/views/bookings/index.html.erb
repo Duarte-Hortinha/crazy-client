@@ -5,16 +5,15 @@
       <%= "You don't have any confirmed bookings yet." %>
     <% else %>
       <% @bookings.each do |booking| %>
-        <div class="card" style="width: 40rem;">
+        <div class="card" style="width: 30rem;">
           <div class="card-body">
-            <h5 class="card-title"><%= booking.client.first_name %>, <strong><%= booking.client.last_name %></strong> - <%= booking.booking_start %></h5>
+            <h5 class="card-title"><%= booking.client.first_name %>, <strong><%= booking.client.last_name %></strong> at <%= booking.booking_start %></h5>
             <ul class="list-group list-group-flush">
               <li class="list-group-item list-group-item-light"><p> Party size: <%= booking.party_count %></p></li>
               <li class="list-group-item list-group-item-light"><p> Comment: <%= booking.comment %></p></li>
               <li class="list-group-item list-group-item-light"><p> Client's phone number: <%= booking.client.phone_number %></p></li>
-            </ul>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+              <li class="list-group-item list-group-item-light"><%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %> <%= link_to "Delete this booking",   booking_path(booking),   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></li>
+            </ul>          </div>
         </div>
         <% end %>
     <% end %>
