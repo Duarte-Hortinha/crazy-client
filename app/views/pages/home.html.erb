@@ -1,13 +1,16 @@
-<h1>Pages#home</h1>
 
 <div
-  class="container d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center bg-danger"
+  class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center"
   <%# style="height: 50%" %>
 >
+    <h2>Check if your client is crazy?</h2>
   <div class="d-flex align-items-center justify-content-center">
     <%= form_with url: search_path, method: :get, local: true, class: 'search-form' do %>
-      <%= text_field_tag :first_name, params[:first_name], placeholder: "First Name", class: 'form-input' %>
-      <%= text_field_tag :phone_number, params[:phone_number], placeholder: "Phone Number", class: 'form-input' %>
+    <i class="fa-solid fa-user"></i>
+      <%= text_field_tag :first_name, params[:first_name], placeholder: "First Name", class: 'form-input ms-1' %>
+      <%= text_field_tag :last_name, params[:last_name], placeholder: "Last Name", class: 'form-input  me-5'%>
+      <i class="fa-solid fa-mobile-screen"></i>
+      <%= text_field_tag :phone_number, params[:phone_number], placeholder: "Phone Number", class: 'form-input ms-1' %>
       <%= submit_tag "Search", class: 'search-button' %>
     <% end %>
   </div>
