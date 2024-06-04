@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(restaurant: current_restaurant)
   end
 
+  def show
+    @booking = Booking.find(params[id])
+  end
+
   def new
     @client = Client.find(params[:client_id])
     @booking = Booking.new
