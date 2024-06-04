@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+client = Client.create!(
+  first_name: "Client 2",
+  last_name: "Last Name 2",
+  phone_number: "920567432",
+  ccr: 4.4
+)
