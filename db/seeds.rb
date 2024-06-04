@@ -44,4 +44,10 @@ Restaurant.create(
   name: "Gourmet Bistro",
   ccr_acceptance: 2.5,
   capacity: 100
+ )
+client = Client.create!(
+  first_name: "Client 2",
+  last_name: "Last Name 2",
+  phone_number: "920567432",
+  ccr: 4.4
 )
