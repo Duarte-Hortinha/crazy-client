@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def new
     @booking = Booking.find(params[:booking_id])
     @review = Review.new
@@ -13,6 +14,5 @@ class ReviewsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
 
 end
