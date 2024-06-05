@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :bookings, except: [:new, :create] do
     resources :reviews, except: [:destroy]
   end
-  
+
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'search', to: 'clients#index', as: :search

@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Review of <%= @review.booking.client.first_name %> <%= @review.booking.client.last_name %></h2>
+  <p>Customer delay time: <%= @review.punctuality if @review.attendance == true %></p>
+  <p><%= @review.comment %></p>
+  <p><%= @review.created_at %></p>
+  <p><%= link_to "client profile", client_path(@review.booking.client), class: "btn btn-info" %></p>
+</div>

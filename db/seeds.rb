@@ -60,7 +60,7 @@ client_4 = Client.create!(
 )
 
 puts 'creating bookings'
-Booking.create!(
+booking = Booking.create!(
   booking_start: DateTime.new(2024, 6, 5, 19, 0, 0),
   booking_end: DateTime.new(2024, 6, 5, 21, 0, 0),
   comment: "Birthday celebration",
@@ -69,7 +69,7 @@ Booking.create!(
   client_id: client.id
 )
 
-Booking.create!(
+booking_2 = Booking.create!(
   booking_start: DateTime.new(2024, 6, 6, 12, 0, 0),
   booking_end: DateTime.new(2024, 6, 6, 14, 0, 0),
   comment: "Business lunch meeting",
@@ -78,7 +78,7 @@ Booking.create!(
   client_id: client_2.id
 )
 
-Booking.create!(
+booking_3 = Booking.create!(
   booking_start: DateTime.new(2024, 6, 7, 18, 30, 0),
   booking_end: DateTime.new(2024, 6, 7, 20, 30, 0),
   comment: "Anniversary dinner",
@@ -87,13 +87,47 @@ Booking.create!(
   client_id: client_3.id
 )
 
-Booking.create!(
+booking_4 = Booking.create!(
   booking_start: DateTime.new(2024, 6, 8, 20, 0, 0),
   booking_end: DateTime.new(2024, 6, 8, 22, 0, 0),
   comment: "Family gathering",
   party_count: 5,
   restaurant_id: restaurant_2.id,
   client_id: client_4.id
+)
+
+puts "creating Reviews"
+
+Review.create!(
+  punctuality: 50,
+  comment: "The service was excellent and very punctual.",
+  attendance: true,
+  booking_id: booking.id,
+  created_at: Time.now
+)
+
+Review.create!(
+  punctuality: 30,
+  comment: "The service was okay, but a bit late.",
+  attendance: true,
+  booking_id: booking_2.id,
+  created_at: Time.now
+)
+
+Review.create!(
+  punctuality: 10,
+  comment: "The service was very late and disappointing.",
+  attendance: false,
+  booking_id: booking_3.id,
+  created_at: Time.now
+)
+
+Review.create!(
+  punctuality: 40,
+  comment: "Good service, arrived almost on time.",
+  attendance: true,
+  booking_id: booking_4.id,
+  created_at: Time.now
 )
 
 puts 'done seeding'
