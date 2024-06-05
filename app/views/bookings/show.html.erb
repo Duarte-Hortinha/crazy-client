@@ -1,19 +1,26 @@
   <div class="container">
-  <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
 
-    <div class="m-7">
-      <h3>Booking info</h3>
-      <h1><%= @booking.client.first_name%> <%= @booking.client.last_name%></h1>
-      <h3>Phone number: <%= @booking.client.phone_number %></h3>
-      <h4><%= @booking.booking_start %></h4>
-      <h4>Party Number: <%= @booking.party_count %></h4>
-      <br>
-      <h4>Comment: <%= @booking.comment %></h4>
-    </div>
+      <div class="m-7 gep-top mt-4">
+        <h1><%= @booking.client.first_name%> <%= @booking.client.last_name%> | CCR - <%= @booking.client.ccr %></h1>
+        <br>
+        <h3>☎️ <%= @booking.client.phone_number %></h3>
+        <br>
+        <h3>🕜 <%= @booking.booking_start.strftime('%I:%M') %> | <%= @booking.booking_start.strftime('%b %d, %Y') %> </h3>
+        <br>
+        <h4>🧑‍🤝‍🧑 <%= @booking.party_count %></h4>
+        <br>
+        <h3>🍽️ 22</h3>
+        <br>
+        <br>
+        <h4>Comment:</h4>
+        <p><%= @booking.comment %></p>
+      </div>
 
-    <div class="m-7 gep-top mt-4">
-      <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p>
-      <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p>
+      <div class="m-7 gep-top mt-4">
+        <p><%= link_to "Client Details", client_path(@booking.client), class:"btn btn-primary" %></p>
+        <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p>
+        <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p>
+      </div>
     </div>
-  </div>
   </div>
