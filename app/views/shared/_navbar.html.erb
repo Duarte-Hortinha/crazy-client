@@ -1,40 +1,40 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+  <div class="d-flex justify-content-around flex-grow-1 pt-4 pb-2">
+    <div class="flex-item align-items-center">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if restaurant_signed_in? %>
 
-    <%= link_to "#", class: "navbar-brand" do %>
-    Crazy Client
-    <% end %>
+            <li class="nav-item dropdown">
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-list" style="font-size: 1.8em;"></i>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            </a>
+              <div class="dropdown-menu dropdown-menu-start" aria-labelledby="navbarDropdown">
+                <%# <%= link_to "My profile (link missing)", "#", class: "dropdown-item" %>
+                <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_restaurant_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_restaurant_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if restaurant_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home (link missing)", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa-solid fa-list"></i>
-        
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My profile (link missing)", "#", class: "dropdown-item" %>
-              <%= link_to "My bookings", bookings_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_restaurant_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_restaurant_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="flex-item align-items-center">
+      <%= link_to image_tag("logo.png", class: "navbar-brand"), root_path %>
+    </div>
+
+    <div class="flex-item align-items-center">
+      <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown"), edit_restaurant_registration_path %>
     </div>
   </div>
 </div>
