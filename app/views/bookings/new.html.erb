@@ -7,16 +7,13 @@
         <h4 class="d-flex justify-content-center"><strong><%= @client.first_name %> <%= @client.last_name %> </strong><i class="fa-solid fa-phone"></i> <%= @client.phone_number%></h4>
       </div>
 
-      <div class="py-2">
+      <div class="py-2 d-flex justify-content-center">
         <%= simple_form_for [@client, @booking], data: { controller: 'datepicker' } do |f| %>
               <%= f.input :booking_start, :label => "Date", as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
               <%= f.input :party_count, as: :integer %>
               <%= f.input :comment, as: :string %>
-      </div>
-      <div class="py-2 d-flex justify-content-center">
               <%= f.submit 'Confirm this Booking', class:"text-decoration-none btn btn-info rounded-3" %>
         <% end %>
       </div>
-
   </div>
 </div>

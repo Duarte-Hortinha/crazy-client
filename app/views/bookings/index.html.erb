@@ -17,6 +17,7 @@
                     <p>&#128383;: <%= booking.client.phone_number %></p>
                   </div>
                   <div id="showlink"><%= link_to "Booking details", booking_path(booking), class:"btn btn-primary" %></div>
+                  <div id="showlink"><%= link_to "Create a review", new_booking_review_path(booking), class:"btn btn-danger" %></div>
                 </div>
             </li>
           <% end %>
