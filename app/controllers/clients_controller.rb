@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   def index
 
     if params[:first_name].present? || params[:phone_number].present? || params[:last_name].present?
-      
+
     else
       @clients = Client.all
     end
@@ -28,7 +28,6 @@ class ClientsController < ApplicationController
   end
 
   def edit
-    @restaurant = current_restaurant # probably here it is needed (see update reference)
     @client = Client.find(params[:id]) # getting the client ID, is this the way? - params[:id] possible -
   end
 
@@ -37,15 +36,15 @@ class ClientsController < ApplicationController
     # | - going to do this default first
     # else the restaurant ...
 
-    @restaurant = current_restaurant # not know if this is needed (probably yes)
     @client = Client.find(params[:id]) # finding client to update, by ID
+
     if @client.update(client_params)
       # flash[:success] = "Client succesfully updated!" #refrencing _flashes.html.erb on shared views
       flash[:notice] = "Client info succesfully updated!"
       redirect_to root_path # to be replaced in the future
       # redirect_to new_client_booking_path(@client.id) # get client that was updated ID, is .id needed?
     else
-      render action: :edit
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
