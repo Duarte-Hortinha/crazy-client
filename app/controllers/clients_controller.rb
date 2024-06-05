@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   def index
 
     if params[:first_name].present? || params[:phone_number].present? || params[:last_name].present?
-
+      
     else
       @clients = Client.all
     end
