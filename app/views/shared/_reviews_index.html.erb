@@ -11,3 +11,17 @@
     <%#= reference the booking to which the review belonged  %>
   <% end %>
 </div>
+
+<div>
+  <h3>Here are the reviews of the client that happened on our restaurant:</h3>
+  <% my_restaurant_bookings.each do |booking| %>
+    <p><%= booking.client.reviews.where(booking: booking) %></p>
+  <% end %>
+</div>
+<!--
+my_restaurant_client_reviews = []
+
+ my_restaurant_bookings.each do |booking|
+my_restaurant_client_reviews << booking.client.reviews.where(booking: booking)
+end
+-->
