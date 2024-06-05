@@ -11,7 +11,7 @@
         <%= simple_form_for [@client, @booking], data: { controller: 'datepicker' } do |f| %>
               <%= f.input :booking_start, :label => "Date", as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
               <%= f.input :party_count, as: :integer %>
-              <%= f.input :comment, as: :string %>
+              <%= f.input :comment, hint: 'optional', as: :string %>
       </div>
       <div class="py-2 d-flex justify-content-center">
               <%= f.submit 'Confirm this Booking', class:"text-decoration-none btn btn-info rounded-3" %>
