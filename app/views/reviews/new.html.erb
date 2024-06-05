@@ -1,0 +1,18 @@
+<div class="container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+
+    <div class="container column justify-content-center">
+
+      <div class="row py-2 d-flex justify-content-center">
+        <h2 class="d-flex justify-content-center">Make a review for</h2>
+        <h4 class="d-flex justify-content-center"><strong><%= @booking.client.first_name %> <%= @booking.client.last_name %> at <%= @booking.booking_start%></h4>
+      </div>
+      <div class="py-2 d-flex justify-content-center">
+        <%= simple_form_for [@booking, @review], data: { controller: 'review' } do |f| %>
+          <%= f.input :attendance, inline_label: "Did the client show up?",as: :boolean, input_html: { data: { action: "review#change", review_target: "attendance" } } %>
+          <%= f.input :punctuality, as: :integer, input_html: { data: { review_target: "punctuality" } } %>
+          <%= f.input :comment, as: :string, hint: 'optional' %>
+          <%= f.submit 'Confirm this review', class: "text-decoration-none btn btn-info rounded-3" %>
+        <% end %>
+      </div>
+  </div>
+</div>

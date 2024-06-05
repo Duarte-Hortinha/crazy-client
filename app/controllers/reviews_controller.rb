@@ -18,5 +18,10 @@ class ReviewsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+  private
 
+  def review_params
+    params.require(:review).permit(:punctuality, :comment, :attendance) # added photo because of cloudinary
+  end
 end
