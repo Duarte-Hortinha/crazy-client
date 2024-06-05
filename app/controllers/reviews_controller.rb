@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all # but then it would be for our restaurant only...
+    # @reviews = Review.all # but then it would be for our restaurant only...
+    @booking = Booking.find(params[:booking_id])
+    @reviews = @booking.review # wrong
   end
 
   def new

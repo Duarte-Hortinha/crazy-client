@@ -4,14 +4,14 @@ but it would still be for the reviews that our restaurant has done,
 NEVER for all of the reviews that exist!!!</h4> -->
 
 <h2 class="h2">
-  This are the reviews for this client ⬇️
+  This are the reviews for client <em>replace</em>⬇️
 </h2>
 <div class="empty-for-now">
   <% @reviews.each do |review| %>
     <div lcass="card-info">
       <h3 class="h3">Crazy behaviour happened: -to correct-<%#= review.bookings_id.booking_start %></h3>
       <% if review.attendance %>
-        <p>The client <em>showed up</em>, but arrived <strong><%= review.punctuality %></strong> minutes late!</p>
+        <p>Mr <%= review.client.last_name %> <em>showed up</em>, but arrived <strong><%= review.punctuality %></strong> minutes late!</p>
       <% else %>
         <p>The client did <strong>not</strong> show up!</p>
       <% end %>
