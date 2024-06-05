@@ -4,18 +4,26 @@
     <% if @bookings.empty? %>
       <%= "You don't have any confirmed bookings yet." %>
     <% else %>
-      <% @bookings.each do |booking| %>
-        <div class="card" style="width: 30rem;">
-          <div class="card-body">
-            <h5 class="card-title"><%= booking.client.first_name %>, <strong><%= booking.client.last_name %></strong> at <%= booking.booking_start %></h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item list-group-item-light"><p> Party size: <%= booking.party_count %></p></li>
-              <li class="list-group-item list-group-item-light"><p> Comment: <%= booking.comment %></p></li>
-              <li class="list-group-item list-group-item-light"><p> Client's phone number: <%= booking.client.phone_number %></p></li>
-              <li class="list-group-item list-group-item-light"><%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %> <%= link_to "Delete this booking",   booking_path(booking),   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></li>
-            </ul>          </div>
-        </div>
-        <% end %>
+      <div>
+        <ul class="list-group list-group-flush width:100%;" id="bookul">
+          <% @bookings.each do |booking| %>
+            <li class="list-group-item list-group-item-light">
+                <div id="indexitemb">
+                  <div id="listitemb">
+                    <p><strong><%= booking.booking_start %></strong></p>
+                    <p>&#128100;: <%= booking.party_count %> people</p>
+                    <p><%= booking.client.first_name.capitalize %></p>
+                    <p><%= booking.client.last_name.capitalize %></p>
+                    <p>&#128383;: <%= booking.client.phone_number %></p>
+                  </div>
+                  <div id="showlink"><%= link_to "Booking details", booking_path(booking), class:"btn btn-primary" %></div>
+                </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
   </div>
 </div>
+<%# <%# <<%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %>
+<%# <%= link_to "Delete this booking",   booking_path(booking),   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
