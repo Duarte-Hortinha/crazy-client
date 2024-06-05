@@ -1,0 +1,16 @@
+<!-- <h1 class="h1">All reviews here - index page specific</h1>
+<h4>This is supposed to only be done in case we have time,
+but it would still be for the reviews that our restaurant has done,
+NEVER for all of the reviews that exist!!!</h4> -->
+
+<h2 class="h2">
+  This are the reviews for this client ⬇️
+</h2>
+<div>
+  <% @reviews.each do |review| %>
+    <p><%= review.comment %></p>
+    <p><%= review.punctuality %></p>
+    <p><%= review.attendance %></p>
+    <%#= reference the booking to which the review belonged  %>
+  <% end %>
+</div>
