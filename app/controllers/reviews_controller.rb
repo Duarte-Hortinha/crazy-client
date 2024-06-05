@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @reviews = Review.all # but then it would be for our restaurant only...
+  end
+
   def new
     @booking = Booking.find(params[:booking_id])
     @review = Review.new
