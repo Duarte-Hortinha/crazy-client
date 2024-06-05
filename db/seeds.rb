@@ -9,9 +9,9 @@
 #   end
 
 puts 'destroying records'
+Booking.destroy_all
 Client.destroy_all
 Restaurant.destroy_all
-Booking.destroy_all
 
 puts 'creating restaurant'
 restaurant = Restaurant.create!(
