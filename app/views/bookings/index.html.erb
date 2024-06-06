@@ -10,7 +10,7 @@
             <li class="list-group-item list-group-item-light">
                 <div id="indexitemb">
                   <div id="listitemb">
-                    <p><strong><%= booking.booking_start %></strong></p>
+                    <p><strong><%= booking.booking_start.strftime('%b %d %H:%M') %></strong></p>
                     <p>&#128100;: <%= booking.party_count %> people</p>
                     <p><%= booking.client.first_name.capitalize %></p>
                     <p><%= booking.client.last_name.capitalize %></p>
