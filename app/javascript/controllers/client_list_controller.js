@@ -2,17 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="client-list"
 export default class extends Controller {
-  static targets = [ "form", "first", "last", "phone"]
+  static targets = [ "form", "first", "last", "phone", "list" ]
   connect() {
-    this.firstTarget.addEventListener('keyup', this.search.bind(this))
-    this.lastTarget.addEventListener('keyup', this.search.bind(this))
-    this.phoneTarget.addEventListener('keyup', this.search.bind(this))
+    console.log(this.firstTarget)
   }
 
-  submitForm() {
-    clearTimeout(this.timeout)
-    this.timeout = setTimeout(() => {
-      this.formTarget.requestSubmit()
-    }, 300) // Adjust the delay as needed
+  update() {
+    const url = `${this.formTarget.action}?first=${this.firstTarget.value}&last=${this.lastTarget.value}&phone=${this.phoneTarget.value}`
+    fetch(url, {headers: {"Accept": "text/plain"}})
+      .then(response => response.text())
+      .then((data) => {
+        this.listTarget.outerHTML = data
+      })
   }
 }
