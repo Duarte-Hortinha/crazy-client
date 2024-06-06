@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
 
   def udpate_ccr
     if @review.attendance
-      if @review.punctuality >= 3
+      if @review.punctuality >= 30
         @client.ccr += 0.5
       else
         @client.ccr += 0.25
