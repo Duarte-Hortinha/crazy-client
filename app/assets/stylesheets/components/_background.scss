@@ -1,0 +1,33 @@
+
+// body {
+//   background: none;
+// }
+
+// body::before {
+//   content: "";
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background: asset-url('background.jpeg') no-repeat center center fixed;
+//   background-size: cover;
+//   opacity: 0.3;
+//   z-index: -1;
+// }
+
+.app-body {
+  background: asset-url('background_bright.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: transparent;
+  backdrop-filter: blur(2px);
+  min-height: 100vh;
+  height: auto;
+}
+
+
+
+// .home_index::before,
+// .about_show::before {
+//   content: none;
+// }
