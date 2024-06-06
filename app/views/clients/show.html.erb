@@ -15,19 +15,25 @@
   </div>
 
   <div class="d-flex flex-column justify-content-center">
-    <h3 class="text-center">Reviews</h3>
+    <h2 class="text-center">Client Reviews</h2>
 
     <% if @client.bookings %>
       <% @client.bookings.each do |booking| %>
-        <%= booking.review %>
-        <!-- Do more when there is a new SEED when there are clients where 1 booking for 1 review ONLY -->
-        <!-- Build an inline card with comment, punctuality & attendance (with if statement) and belonged restaurant -->
-        <!-- TO DO day 06/06/2024 -->
-        <%= link_to "See further Review details", booking_review_path(booking), class:"btn btn-info" %>
+        <% if booking.review.attendance %>
+          <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |
+          Showed up? <strong>YES</strong> |
+          Late by <span class="fw-bold"><%= booking.review.punctuality %> </span>minutes
+          <%= link_to "See further review details", booking_review_path(booking), class:"btn btn-info float-right" %>
+          </p>
+        <% else %>
+          <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |
+          Showed up? <strong>NO</strong> <%= link_to "See further review details", booking_review_path(booking), class:"btn btn-info float-right" %>
+          </p>
+        <% end %>
       <% end %>
     <% else %>
-      <p>Mr <%= @client.last_name %> does not have any reviews yet!</p>
-      <%= link_to "Bookings", bookings_path, class:"btn btn-info" %>
+      <p>Mr <em><%= @client.last_name %></em> does not have any reviews yet!</p>
+      <%= link_to "Back to Bookings Registry", bookings_path, class:"btn btn-info" %>
     <% end %>
 
   </div>
