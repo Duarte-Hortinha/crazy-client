@@ -1,7 +1,8 @@
 
 <div class="container pt-4 pb-4">
-
-  <%= render "clients/search_clients" %>
+  <div>
+    <%= render "clients/search_clients" %>
+  </div>
     <% @clients.each do |client| %>
       <div class="container m-2 row justify-content-center">
             <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
@@ -18,10 +19,7 @@
                 <div class="flex-item flex-grow-1 m-4">
                   <div class="d-flex align-items-start mb-7">
                   <p><i class="fa-solid fa-user"></i>  <%= client.first_name %> <%= client.last_name %>  |  <i class="fa-solid fa-phone"></i> <%= client.phone_number %></p>
-
-
                   </div>
-
                 </div>
 
                 <div class="flex-item me-4">
