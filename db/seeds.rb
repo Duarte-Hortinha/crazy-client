@@ -16,7 +16,7 @@ Booking.destroy_all
 Review.destroy_all
 
 puts 'creating restaurant'
-restaurant = Restaurant.create!(
+restaurant1 = Restaurant.create!(
   email: "info@gourmetbistro.com",
   password: "1234567",
   name: "Gourmet Bistro",
@@ -518,7 +518,7 @@ client60 = Client.create!(
 )
 
 client61 = Client.create!(
-  first_name: "Ella",
+  first_name: "Ellaia",
   last_name: "Cox",
   phone_number: "555-3450",
   ccr: 2.8
@@ -851,7 +851,7 @@ booking17 = Booking.create!(
   comment: "Corporate event",
   party_count: 15,
   restaurant_id: restaurant1.id,
-  client_id: client.id
+  client_id: client17.id
 )
 
 booking18 = Booking.create!(
