@@ -5,6 +5,8 @@
   </div>
 
   <%= render "clients/search_clients" %>
+
+
     <% @clients.each do |client| %>
     <% progress_color = client.ccr >= 2.5 ? "green" : "red" %>
 
@@ -14,12 +16,12 @@
       <style>
         circle-progress::part(circle) {
           stroke: grey;
-          stroke-width: 10;
+          stroke-width: 15;
         }
 
         circle-progress::part(value) {
-          stroke: var(progress_color, ) ;
-          stroke-width: 10;
+          stroke: green;
+          stroke-width: 15;
         }
 
         circle-progress::part(text) {
@@ -29,11 +31,12 @@
         }
       </style>
 
+
       <div class="container m-4 row justify-content-center">
             <div class="card-category col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
 
                 <div class="flex-item m-4"> <!-- client.booking.restaurant.ccr_acceptance - replace with 2.5, no errors -->
-                  <circle-progress value="<%= client.ccr %>" max="5" text-format="value" ></circle-progress>
+                  <circle-progress value="<%= client.ccr %>" max="5.0" text-format="value" data-fg-color="red"></circle-progress>
                 </div>
 
                 <div class="flex-item flex-grow-1 m-4">
