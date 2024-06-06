@@ -18,3 +18,26 @@
     </div>
    <p><%= link_to "Go Back", client_path(@review.booking.client), class: "btn btn-info" %></p>
 </div>
+
+
+<h2>Second version - after the index was removed</h2>
+<div class="empty-for-now">
+    <div lcass="card-info">
+      <h3 class="h3">Crazy behaviour happened: <%= @review.booking.booking_start %></h3>
+      <% if @review.attendance %>
+        <p>Mr <em><%= @review.booking.client.last_name %></em>
+          showed up, but arrived <strong><%= @review.punctuality %></strong> minutes late!
+        </p>
+      <% else %>
+        <p>Mr <em><%= @review.booking.client.last_name %></em> did <strong>not</strong> show up!</p>
+      <% end %>
+      <div class="div-to-pop">
+        <span class="to-populate">
+          Comment left by <em><%= @review.booking.restaurant.name %></em>'s manager:
+        </span>
+        <p class="text-info">
+        <%= @review.comment %>
+        </p>
+      </div>
+    </div>
+</div>

@@ -1,9 +1,5 @@
 class ReviewsController < ApplicationController
 
-  def index
-    @reviews = Review.all # but then it would be for our restaurant only...
-  end
-
   def new
     @booking = Booking.find(params[:booking_id])
     @review = Review.new
@@ -18,11 +14,11 @@ class ReviewsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
    @review = Review.find(params[:id])
   end
-  
+
   private
 
   def review_params
