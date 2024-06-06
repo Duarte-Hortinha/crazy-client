@@ -10,9 +10,7 @@ class ClientsController < ApplicationController
     if my_params.empty?
       @clients = Client.all
     else
-      @clients = Client.where("first_name LIKE ? ", "%#{params[:first]}%") if params[:first].present?
-      @clients = Client.where("last_name LIKE ? ", "%#{params[:last]}%") if params[:last].present?
-      @clients = Client.where("phone_number LIKE ? ", "%#{params[:phone]}%") if params[:phone].present?
+      @clients = Client.filter(params[:first], params[:last], params[:phone])
     end
   end
 
@@ -26,6 +24,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.ccr = 5.0
     if @client.save
       redirect_to new_client_booking_path(@client) # correct, goes to show page but @meme has to yield ID
     else
