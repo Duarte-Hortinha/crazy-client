@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, except: [:index, :destroy]
   end
 
-  root to: "pages#home"
+  root to: "clients#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get 'search', to: 'clients#index', as: :search
 
