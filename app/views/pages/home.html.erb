@@ -5,12 +5,10 @@
 >
     <h2>Check if your client is crazy?</h2>
   <div class="d-flex align-items-center justify-content-center">
-    <%= form_with url: search_path, method: :get, local: true, class: 'search-form' do %>
-    <i class="fa-solid fa-user"></i>
-      <%= text_field_tag :first_name, params[:first_name], placeholder: "First Name", class: 'form-input ms-1' %>
-      <%= text_field_tag :last_name, params[:last_name], placeholder: "Last Name", class: 'form-input  me-5'%>
-      <i class="fa-solid fa-mobile-screen"></i>
-      <%= text_field_tag :phone_number, params[:phone_number], placeholder: "Phone Number", class: 'form-input ms-1' %>
+    <%= form_with url: clients_path, method: :get, local: true, class: 'search-form' do %>
+      <%= text_field_tag :first, params[:first] , placeholder: "First Name", class: 'form-control' %>
+      <%= text_field_tag :last, params[:last], placeholder: "Last Name", class: 'form-control'%>
+      <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1' %>
       <%= submit_tag "Search", class: 'search-button' %>
     <% end %>
   </div>
