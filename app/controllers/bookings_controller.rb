@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.where(restaurant: current_restaurant)
+    @restaurant = current_restaurant
   end
 
   def show
@@ -14,7 +15,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.client = Client.find(params[:client_id])
+    @client = Client.find(params[:client_id])
+    @booking.client = @client
     @booking.restaurant = current_restaurant
     if @booking.save
       redirect_to bookings_path  # correct, goes to show page but @meme has to yield ID

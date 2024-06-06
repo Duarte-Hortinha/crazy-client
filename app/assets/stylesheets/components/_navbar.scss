@@ -11,3 +11,25 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-left,
+.navbar-right {
+  flex: 1;
+}
+
+.spacer {
+  flex: 1;
+}
