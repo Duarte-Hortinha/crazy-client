@@ -2,10 +2,10 @@
   <%# style="height: 50%" %>
    <h2>Check if your client is crazy?</h2>
   <div class="d-flex align-items-center justify-content-center">
-    <%= form_with url: clients_path, method: :get, local: true, class: 'search-form' do %>
-      <%= text_field_tag :first, params[:first] , placeholder: "First Name", class: 'form-input ms-1' %>
-      <%= text_field_tag :last, params[:last], placeholder: "Last Name", class: 'form-input ms-1'%>
-      <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1' %>
+    <%= form_with url: clients_path, method: :get, local: true, class: 'search-form', data: {controller: "search_clients", search_clients_target: "form"} do %>
+      <%= text_field_tag :first, params[:first] , placeholder: "First Name", class: 'form-input ms-1', data: {search_clients_target: "first", action: "keyup->search-clients#update"} %>
+      <%= text_field_tag :last, params[:last], placeholder: "Last Name", class: 'form-input ms-1', data: {search_clients_target: "last", action: "keyup->search-clients#update"} %>
+      <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1', data: {search_clients_target: "phone", action: "keyup->search-clients#update"} %>
       <%= submit_tag "Search", class: 'search-button' %>
     <% end %>
   </div>
