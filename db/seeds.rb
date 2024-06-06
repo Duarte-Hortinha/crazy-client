@@ -9,6 +9,7 @@
 #   end
 
 puts 'destroying records'
+Review.destroy_all
 Booking.destroy_all
 Client.destroy_all
 Restaurant.destroy_all
