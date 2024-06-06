@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.ccr = 5.0
     if @client.save
       redirect_to new_client_booking_path(@client) # correct, goes to show page but @meme has to yield ID
     else
