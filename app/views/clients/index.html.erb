@@ -1,35 +1,27 @@
 <div class="container mt-4 mb-4">
-  <div class="container m-4 d-flex justify-content-center">
-    <h1>Clients</h1>
-  </div>
-
   <%= render "clients/search_clients" %>
-    <% @clients.each do |client| %>
-  <div class="container m-4 row justify-content-center">
-            <div class="card-category col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
 
-                <div class="flex-item m-4">
-                  <p>Rating</p>
-                </div>
+  <% @clients.each do |client| %>
+    <div class="container m-4 row justify-content-center">
+      <div class="card-category col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
+        <div class="flex-item m-4">
+          <p>Rating</p>
+        </div>
 
-                <div class="flex-item flex-grow-1 m-4">
-                  <p><i class="fa-solid fa-user"></i>  <%= client.first_name %> <%= client.last_name %></p>
-                  <p><i class="fa-solid fa-phone"></i>  <%= client.phone_number %></p>
-                </div>
+        <div class="flex-item flex-grow-1 m-4">
+          <p><i class="fa-solid fa-user"></i> <%= client.first_name %> <%= client.last_name %></p>
+          <p><i class="fa-solid fa-phone"></i> <%= client.phone_number %></p>
+        </div>
 
-                <div class="flex-item me-4">
-                    <div class="d-flex align-items-start mb-4">
-                      <%= link_to "see details", client_path(client), class: "details-link" %>
-                    </div>
-                    <div class="align-items-end mt-4">
-                      <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3" %>
-                    </div>
-                </div>
-              </div>
-  </div>
-    <% end %>
-
-
+        <div class="flex-item me-4">
+          <div class="d-flex align-items-start mb-4">
+            <%= link_to "see details", client_path(client), class: "details-link" %>
+          </div>
+          <div class="align-items-end mt-4">
+            <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3" %>
+          </div>
+        </div>
+      </div>
     </div>
-
+  <% end %>
 </div>
