@@ -12,7 +12,7 @@
         <div class="py-2 d-flex justify-content-center">
           <%= simple_form_for [@booking, @review], data: { controller: 'review' } do |f| %>
             <%= f.input :attendance, inline_label: "Did the client show up?",as: :boolean, input_html: { data: { action: "review#change", review_target: "attendance" } } %>
-            <%= f.input :punctuality, as: :integer, input_html: { data: { review_target: "punctuality" } } %>
+            <%= f.input :punctuality, as: :integer, min: 0, input_html: { data: { review_target: "punctuality" } } %>
             <%= f.input :comment, as: :string, hint: 'optional' %>
             <%= f.submit 'Confirm this review', class: "text-decoration-none btn btn-info rounded-3" %>
           <% end %>
