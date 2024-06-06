@@ -3,8 +3,12 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def edit
+    @restaurant = Restaurant.find(current_restaurant)
+  end
+
   def update
-    @restaurant = @restaurant.current_user
+    @restaurant = Restaurant.find(current_restaurant)
 
     if @restaurant.update(restaurant_params)
       flash[:notice] = "Restaurant info succesfully updated!"

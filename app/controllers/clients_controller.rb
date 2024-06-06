@@ -2,12 +2,19 @@ class ClientsController < ApplicationController
   before_action :authenticate_restaurant! # , except: :update
 
   def index
-    # if params[:first_name].present? || params[:phone_number].present? || params[:last_name].present?
 
-    # else
-    #   @clients = Client.all
-    # end
-    @clients = Client.all
+    my_params = {}
+    my_params[:first_name] = params[:first] if params[:first].present?
+    my_params[:last_name] = params[:last] if params[:last].present?
+    my_params[:phone_number] = params[:phone] if params[:phone].present?
+
+    if my_params.empty?
+      @clients = Client.all
+    else
+      @clients = Client.where("first_name LIKE ? ", "%#{params[:first]}%") if params[:first].present?
+      @clients = Client.where("last_name LIKE ? ", "%#{params[:last]}%") if params[:last].present?
+      @clients = Client.where("phone_number LIKE ? ", "%#{params[:phone]}%") if params[:phone].present?
+    end
   end
 
   def show
