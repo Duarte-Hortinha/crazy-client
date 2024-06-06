@@ -55,7 +55,7 @@
               <%= cl_image_tag(current_restaurant.photo.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown") %>
             <% end %>
           <% else  %>
-            <%= link_to image_tag("no_restaurant_image.PNG", class: "avatar dropdown-toggle", id: "navbarDropdown"), edit_restaurant_registration_path %>
+            <%= link_to image_tag("no_restaurant_image.png", class: "avatar dropdown-toggle", id: "navbarDropdown"), edit_restaurant_registration_path %>
           <% end %>
         <% end %>
       </div>
