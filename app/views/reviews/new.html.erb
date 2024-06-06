@@ -2,13 +2,13 @@
 
     <div class="container column justify-content-center">
       <div class="row py-2 d-flex justify-content-center">
-      <% if (Time.now - @booking.booking_start < 0) %>
+      <% if (Time.now < @booking.booking_start) %>
         <h3 class="h3 text-info">You <strong> cannot </strong> make a review for Mr <em><%= @booking.client.last_name %></em> yet</h3>
         <h4 class="d-flex justify-content-center">The booking will happen at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></h4>
         <p><%= link_to "Go back to bookings registry", bookings_path, class: "btn btn-primary" %></p>
       <% else %>
         <h2 class="d-flex justify-content-center">Make a review for</h2>
-        <h4 class="d-flex justify-content-center"><strong><%= @booking.client.first_name %> <%= @booking.client.last_name %> at <%= @booking.booking_start.strftime('%b %d, %Y') %></h4>
+        <p class="d-flex justify-content-center"><em><%= @booking.client.first_name %> <%= @booking.client.last_name %> </em> - at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></p>
         <div class="py-2 d-flex justify-content-center">
           <%= simple_form_for [@booking, @review], data: { controller: 'review' } do |f| %>
             <%= f.input :attendance, inline_label: "Did the client show up?",as: :boolean, input_html: { data: { action: "review#change", review_target: "attendance" } } %>
