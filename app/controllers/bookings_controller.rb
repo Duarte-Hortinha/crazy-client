@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.where(restaurant: current_restaurant)
     @restaurant = current_restaurant
+    @bookings = Booking.where(restaurant: @restaurant).order(created_at: :desc)
   end
 
   def show
