@@ -1,0 +1,34 @@
+input[type="submit"] {
+  font-family: 'Poppins'; /* Change the font family for the submit button */ /* Change the font size */
+  color: #FFFFFF; /* Change the text color */ /* Change the background color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add padding */ /* Add border radius for rounded corners */
+  cursor: pointer; /* Change the cursor on hover */
+}
+
+input[type="submit"]:hover {
+  background-color: #2C47B9; /* Change the background color on hover */
+}
+
+.custom-input {
+  font-family: 'Poppins';
+  border: 1px solid #B0B0B0;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #F5F5F5;
+}
+
+.custom-boolean-input {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+
+.custom-boolean-input label {
+  margin-right: 4px; /* Space between label and checkbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
