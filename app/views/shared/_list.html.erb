@@ -1,4 +1,3 @@
-
 <div class="container pt-4 pb-4" data-client-list-target="list">
   <% @clients.each do |client| %>
     <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
