@@ -16,15 +16,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
 
+
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <%= yield %>
 
-    <div>
-    <%= render "shared/footer" %>
+    <%= render "shared/navbar" %>
+    <div class="app-container">
+      <%= render "shared/flashes" %>
+
+      <%= yield %>
+
+
+      <%= render "shared/footer" %>
     </div>
+
   </body>
 </html>
