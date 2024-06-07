@@ -2,8 +2,10 @@
   <h2>Check if your client is crazy!</h2>
   <div class="d-flex align-items-center justify-content-center">
     <%= form_with url: clients_path, method: :get, local: true, class: 'search-form', data: {client_list_target: "form"} do %>
+      <i class="fa-solid fa-user-large"></i>
       <%= text_field_tag :first, params[:first] , placeholder: "First Name", class: 'form-input ms-1', data: {client_list_target: "first", action: "keyup->client-list#update"} %>
       <%= text_field_tag :last, params[:last], placeholder: "Last Name", class: 'form-input ms-1', data: {client_list_target: "last", action: "keyup->client-list#update"} %>
+      <i class="fa-solid fa-phone"></i>
       <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1', data: {client_list_target: "phone", action: "keyup->client-list#update"} %>
       <%= submit_tag "Search", class: 'search-button' %>
     <% end %>
