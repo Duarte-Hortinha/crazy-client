@@ -1,30 +1,43 @@
 <div class="container" id="bookingscont">
-  <h1><em><%= @restaurant.name %></em>'s bookings </h1>
+  <h1 class="mt-4 mb-3"><em><%= @restaurant.name %></em>'s bookings </h1>
   <div class="container" id="mybookingscont">
     <% if @bookings.empty? %>
       <p class="d-flex text-justify-space-around"></p><%= "You don't have any confirmed bookings yet!" %>
     <% else %>
-      <div>
-        <ul class="list-group list-group-flush width:100%;" id="bookul">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Party Number</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Review</th>
+            <th scope="col">Booking Details</th>
+          </tr>
+        </thead>
+        <tbody>
           <% @bookings.each do |booking| %>
-            <li class="list-group-item list-group-item-light">
-                <div id="indexitemb">
-                  <div id="listitemb">
-                    <p><strong><%= booking.booking_start.strftime('%b %d %H:%M') %></strong></p>
-                    <p>&#128100;: <%= booking.party_count %> people</p>
-                    <p><%= booking.client.first_name.capitalize %></p>
-                    <p><%= booking.client.last_name.capitalize %></p>
-                    <p>&#128383;: <%= booking.client.phone_number %></p>
-                  </div>
-                  <div id="showlink"><%= link_to "Create a review", new_booking_review_path(booking), class:"btn btn-danger" %></div>
-                  <div id="showlink"><%= link_to "Booking details", booking_path(booking), class:"btn btn-primary" %></div>
-                </div>
-            </li>
+            <tr>
+              <td class="py-3 align-middle"><strong><%= booking.booking_start.strftime('%b %d %H:%M') %></strong></td>
+              <td class="py-3 align-middle">👤 <%= booking.party_count %> people</td>
+              <td class="py-3 align-middle"><%= booking.client.first_name.capitalize %></td>
+              <td class="py-3 align-middle"><%= booking.client.last_name.capitalize %></td>
+              <td class="py-3 align-middle">📞 <%= booking.client.phone_number %></td>
+              <td class="py-3 align-middle">
+                <% if booking.review %>
+                  <p class="btn btn-secondary disabled align-middle">Already reviewed!</p>
+                <% else %>
+                  <%= link_to "Create a review", new_booking_review_path(booking), class:"btn btn-danger text-nowrap align-middle" %>
+                <% end %>
+              </td>
+              <td class="py-3">
+                <%= link_to "Booking details", booking_path(booking), class:"btn btn-primary text-nowrap" %>
+              </td>
+            </tr>
           <% end %>
-        </ul>
-      </div>
+        </tbody>
+      </table>
     <% end %>
   </div>
 </div>
-<%# <%# <<%= link_to "Edit this booking", edit_booking_path(booking), class:"btn btn-primary" %>
-<%# <%= link_to "Delete this booking",   booking_path(booking),   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %>
