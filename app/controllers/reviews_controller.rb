@@ -43,12 +43,12 @@ class ReviewsController < ApplicationController
   def udpate_ccr
     if @review.attendance
       if @review.punctuality >= 30
-        @client.ccr += 0.5
+        @client.ccr *= ((120 - @review.punctuality)/120)*0.95
       else
-        @client.ccr += 0.25
+        @client.ccr *= 0.98 # 15 minute delay or less
       end
     else
-      @client.ccr -= 1
+      @client.ccr *= 0.9
     end
   end
 end
