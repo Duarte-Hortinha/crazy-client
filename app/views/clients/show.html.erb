@@ -17,8 +17,8 @@
   <div class="d-flex flex-column justify-content-center">
     <h2 class="text-center">Client Reviews</h2>
 
-    <% if @client.bookings %>
-      <% @client.bookings.each do |booking| %>
+    <% if @client.bookings %> <!-- and client has reviews? -->
+      <% @client.bookings.each_with_index do |booking, index| %>
         <% if booking.review.attendance %>
           <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |
           Showed up? <strong>YES</strong> |
@@ -26,9 +26,12 @@
           <%= link_to "See further review details", booking_review_path(booking), class:"btn btn-info float-right" %>
           </p>
         <% else %>
-          <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |
+          <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did not ate at <em><%= booking.restaurant.name %></em> |
           Showed up? <strong>NO</strong> <%= link_to "See further review details", booking_review_path(booking), class:"btn btn-info float-right" %>
           </p>
+        <% end %>
+        <% if index < @client.bookings.size - 1 %>
+          <hr>
         <% end %>
       <% end %>
     <% else %>
