@@ -5,3 +5,15 @@
   margin-top: 25px;
   padding: 10px;
 }
+
+#reviewsubmit {
+  font-family: 'Poppins'; /* Change the font family for the submit button */ /* Change the font size */
+  color: #FFFFFF; /* Change the text color */ /* Change the background color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add padding */ /* Add border radius for rounded corners */
+  cursor: pointer; /* Change the cursor on hover */
+}
+
+#reviewsubmit:hover {
+  background-color: #2C47B9; /* Change the background color on hover */
+}

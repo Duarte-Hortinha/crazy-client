@@ -16,7 +16,7 @@
             </div>
             <%= f.input :punctuality, as: :integer, min: 0, input_html: { data: { review_target: "punctuality" }, min: 30, max: 120, step: 15, class:"custom-input" } %>
             <%= f.input :comment, as: :string, input_html: {class:"custom-input"} %>
-            <%= f.submit 'Confirm this review', class: "btn btn-primary rounded-3" %>
+            <%= f.submit 'Confirm this review', class: "btn btn-primary rounded-3", id:"reviewsubmit" %>
           <% end %>
         </div>
       <% end %>

@@ -1,4 +1,4 @@
-<div class="container pt-4 pb-4" data-client-list-target="list">
+<div class="container pt-4 pb-4" data-client-list-target="list" id="listcont">
   <% @clients.each do |client| %>
     <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
@@ -23,7 +23,7 @@
 
 
       <div class="container m-2 row justify-content-center">
-            <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
+            <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2 bg-white">
 		          <img src="no_restaurant_image" alt="">
 
                 <div class="flex-item m-4"> <!-- client.booking.restaurant.ccr_acceptance - replace with 2.5, no errors -->
