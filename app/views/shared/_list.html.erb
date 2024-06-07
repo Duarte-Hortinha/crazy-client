@@ -46,7 +46,11 @@
                       <%= link_to "see details", client_path(client), class: "details-link" %>
                     </div>
                     <div class="align-items-end mt-4">
-                      <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3" %>
+                      <% if client.ccr < 3.0 %> <!-- Very important tag sweetalert-wise -->
+                        <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3", data: { controller: "alert" } %>
+                      <% else %>
+                        <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3" %>
+                      <% end %>
                     </div>
                 </div>
               </div>
