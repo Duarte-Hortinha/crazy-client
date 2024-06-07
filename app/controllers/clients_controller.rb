@@ -14,6 +14,11 @@ class ClientsController < ApplicationController
     else
       @clients = Client.filter(params[:first], params[:last], params[:phone])
     end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "shared/list", locals: {clients: @clients}, formats: [:html] }
+    end
   end
 
   def show
