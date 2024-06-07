@@ -23,6 +23,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @restaurant = current_restaurant
   end
 
   def new

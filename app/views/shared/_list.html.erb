@@ -2,7 +2,6 @@
   <% @clients.each do |client| %>
     <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
-
        <style>
         circle-progress::part(circle) {
           stroke: grey;
@@ -52,4 +51,5 @@
     	    </div>
     <% end %>
     </div>
+  <% end %>
 </div>

@@ -1,43 +1,26 @@
-<div class="container">
-  <h2>Review of <%= @review.booking.client.first_name %> <%= @review.booking.client.last_name %></h2>
+<div class="container card-category_review d-flex justify-content-center">
 
-  <h4 class="h4">Crazy behaviour happened: -to correct-<%#= review.bookings_id.booking_start %></h4>
-      <% if @review.attendance %>
-        <p>The client <em>showed up</em>, but arrived <strong><%= @review.punctuality %></strong> minutes late!</p>
-      <% else %>
-        <p>The client did <strong>not</strong> show up!</p>
-      <% end %>
-
-   <div class="h5">
-     <span class="to-populate">
-        Comment left by <em>-to correct-<%#= review.bookings_id.restaurant_id.name %></em>'s manager:
-      </span>
-      <p class="text-info">
-        <%= @review.comment %>
-      </p>
-    </div>
-   <p><%= link_to "Go Back", client_path(@review.booking.client), class: "btn btn-info" %></p>
-</div>
-
-
-<h2>Second version - after the index was removed</h2>
-<div class="empty-for-now">
-    <div lcass="card-info">
-      <h3 class="h3">Crazy behaviour happened: <%= @review.booking.booking_start %></h3>
-      <% if @review.attendance %>
-        <p>Mr <em><%= @review.booking.client.last_name %></em>
-          showed up, but arrived <strong><%= @review.punctuality %></strong> minutes late!
-        </p>
-      <% else %>
-        <p>Mr <em><%= @review.booking.client.last_name %></em> did <strong>not</strong> show up!</p>
-      <% end %>
-      <div class="div-to-pop">
-        <span class="to-populate">
-          Comment left by <em><%= @review.booking.restaurant.name %></em>'s manager:
-        </span>
-        <p class="text-info">
-        <%= @review.comment %>
-        </p>
+  <div class="empty-for-now">
+   <h2>Review of <U> <%= @review.booking.client.first_name %> <%= @review.booking.client.last_name %> </U></h2>
+   <br>
+      <div lcass="card-info">
+        <h3 class="h3">Crazy behaviour happened: <%= @review.booking.booking_start.strftime('%b %d, %Y') %></h3>
+        <% if @review.attendance %>
+          <p>Mr <em><%= @review.booking.client.last_name %></em>
+            showed up, but arrived <strong><%= @review.punctuality %></strong> minutes late!
+          </p>
+        <% else %>
+          <p>Mr <em><%= @review.booking.client.last_name %></em> did <strong>not</strong> show up!</p>
+        <% end %>
+        <div class="div-to-pop">
+          <span class="to-populate">
+            Comment left by <strong><%= @review.booking.restaurant.name %></strong><strong>'s</strong> manager:
+          </span>
+          <br>
+          <p class="text-info">
+          <%= @review.comment %>
+          </p>
+        </div>
       </div>
     </div>
 </div>

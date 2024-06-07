@@ -1,0 +1,38 @@
+.footer {
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 30px 0; /* Top and bottom padding */
+  position: relative;
+  width: 100%;
+  margin-top: auto; /* Push the footer to the bottom */
+  min-height: 200px;
+}
+
+.footer-terms, .footer-links, .footer-copyright {
+  flex: 1; /* Make the items take up equal space */
+  text-align: center;
+}
+
+.footer-terms a, .footer-links a {
+  color: $blue; /* Link color */
+  margin: 0 5px; /* Space between links */
+}
+
+.footer-terms span {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  font-size: 1.5em; /* Larger icons */
+}
+
+.footer-links i {
+  margin: 0 10px; /* Space between icons */
+  color: $blue;
+  font-size: 200px; /* Increase this value to make the icons larger */
+  margin: 0 10px; /* Space between icons */
+}
+
+.fab {
+  font-size: 200px;
+}
