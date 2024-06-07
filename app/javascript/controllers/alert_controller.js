@@ -8,6 +8,7 @@ export default class extends Controller {
 
   connect() {
     // this.seeDetailsCrazyClientButtonTarget.addEventListener('click', this.showAlert);
+    console.log("AlertController connected");
     this.element.addEventListener('click', this.showAlert.bind(this));
   }
 
