@@ -1,15 +1,34 @@
 
 <div class="container pt-4 pb-4" data-client-list-target="list">
-    <% @clients.each do |client| %>
+  <% @clients.each do |client| %>
+     <% progress_color = client.ccr >= 2.5 ? "green" : "red" %> <!-- @restaurant.ccr_acceptance -->
+     <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
+
+      <style>
+        circle-progress::part(circle) {
+          stroke: grey;
+          stroke-width: 15;
+        }
+
+        circle-progress::part(value) {
+          stroke: progress_color;
+          stroke-width: 15;
+        }
+
+        circle-progress::part(text) {
+          fill: black;
+          font-size: 1.5rem;
+          font-weight: 100;
+        }
+      </style>
+
+
       <div class="container m-2 row justify-content-center">
             <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2">
-            <img src="no_restaurant_image" alt="">
+		          <img src="no_restaurant_image" alt="">
+
                 <div class="flex-item m-4"> <!-- client.booking.restaurant.ccr_acceptance - replace with 2.5, no errors -->
-                  <% if (client.ccr >= 2.5) %>
-                    <p class="green">Rating: <%= client.ccr %> green</p> <!-- create the scss files and classes -->
-                  <% else %>
-                    <p class="red">Rating: <%= client.ccr %> red</p>
-                  <% end  %>
+                  <circle-progress value="<%= client.ccr %>" max="5.0" text-format="value" data-fg-color="red"></circle-progress>
                 </div>
 
 
