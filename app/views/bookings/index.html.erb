@@ -1,7 +1,9 @@
 <div class="app-body">
 
 <div class="container" id="bookingscont">
-  <h1><em><%= @restaurant.name %></em>'s bookings </h1>
+  <div class="book-title">
+  <h1 ><em><%= @restaurant.name %></em>'s bookings </h1>
+  </div>
   <div class="container" id="mybookingscont">
     <% if @bookings.empty? %>
       <p class="d-flex text-justify-space-around"></p><%= "You don't have any confirmed bookings yet!" %>
