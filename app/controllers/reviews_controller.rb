@@ -44,11 +44,14 @@ class ReviewsController < ApplicationController
     if @review.attendance
       if @review.punctuality >= 30
         @client.ccr *= ((120 - @review.punctuality)/120)*0.95
+        @client.round(1)
       else
         @client.ccr *= 0.98 # 15 minute delay or less
+        @client.round(1)
       end
     else
       @client.ccr *= 0.9
+      @client.round(1)
     end
   end
 end

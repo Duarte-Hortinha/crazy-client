@@ -2,6 +2,8 @@ class ClientsController < ApplicationController
   before_action :authenticate_restaurant! # , except: :update
 
   def index
+    @restaurant = current_restaurant
+
     my_params = {}
     my_params[:first_name] = params[:first] if params[:first].present?
     my_params[:last_name] = params[:last] if params[:last].present?
