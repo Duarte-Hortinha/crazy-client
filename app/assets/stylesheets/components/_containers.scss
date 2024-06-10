@@ -1,8 +1,18 @@
 .booking-new-container {
-  min-height: calc(100vh - 200px);
+  min-height: 83vh;
   height: auto;
 }
 
 .app-container {
-  padding-top: 110px;
+  height: 83vh;
+  padding-top: 11vh;
+}
+
+.footer-container {
+  height: 6vh;
+}
+
+.content-container {
+  min-height: 83vh;
+  padding-top: 11vh;
 }
