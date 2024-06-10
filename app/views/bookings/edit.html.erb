@@ -12,11 +12,8 @@
         <%= f.input :booking_start, :label => "Date", as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
         <%= f.input :party_count, as: :integer %>
         <%= f.input :comment, as: :string %>
-    </div>
-
-    <div class="py-2 d-flex justify-content-center">
-        <%= f.submit 'Confirm this change', class:"text-decoration-none btn btn-info rounded-3" %>
-      <% end %>
+        <span class="py-2 d-flex justify-content-center"><%= f.submit 'Update booking!', class:"text-decoration-none btn btn-info rounded-3 w-100" %></span>
+      <% end %>   <!-- Guys don't place divs inside of the simple form, it makes the action not work! -->
     </div>
 
   </div>
