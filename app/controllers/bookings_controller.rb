@@ -32,9 +32,10 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      flash[:success] = "Booking updated!"
-      redirect_to bookings_path
+      flash[:notice] = "Booking updated!"
+      redirect_to booking_path(@booking.id)
     else
+      flash[:notice] = "Something is wrong!"
       render action: :edit
     end
   end
