@@ -39,20 +39,22 @@
 
 
 .footer {
-  height: 10vh; /* Relative height */
-  background-color: #333;
+  height: 6vh; /* Relative height */
+  background-color: white;
   color: white;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  margin-left: auto;
-  margin-right: auto;
+
+  justify-content: space-around;
+
 }
 
 .footer p {
   margin: 0;
   font-size: 2.5vh; /* Relative font size */
+}
+
+.footer span {
+  color: black;
 }
 
 @media (max-width: 600px) {
