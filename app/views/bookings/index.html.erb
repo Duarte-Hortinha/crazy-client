@@ -32,7 +32,7 @@
                   <td class="py-3 align-middle">📞 <%= booking.client.phone_number %></td>
                   <td class="py-3 align-middle">
                     <% if booking.review %>
-                      <p class="btn btn-outline-secondary disabled align-middle btn-table-style">Already reviewed!</p>
+                      <p class="btn btn-otline-secondary disabled align-middle btn-table-style">Already reviewed!</p>
                     <% else %>
                       <%= link_to "Create a review", new_booking_review_path(booking), class:"btn btn-danger text-nowrap align-middle btn-table-style", id:"newreviewbtn" %>
                     <% end %>
