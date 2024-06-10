@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
     if my_params.empty?
       @clients = Client.all
     else
-      @clients = Client.filter(params[:first], params[:last], params[:phone])
+      @clients = Client.filter(params[:first].downcase.capitalize, params[:last].downcase.capitalize, params[:phone])
     end
 
     respond_to do |format|
