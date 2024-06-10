@@ -1,6 +1,6 @@
 
 <div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4" id="restaurantedit">
-  <div class="container form-card column justify-content-center">
+  <div class="container column justify-content-center">
 
       <h2>Edit <%= resource.name.to_s.humanize %></h2>
 
@@ -42,11 +42,14 @@
 
       <div class="py-4">
         <div class="py-2">Unhappy?</div>
-        <div class="py-2"> <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", id:"btndangeredit", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-      </div>
-
-      <div class="py-2">
-        <%= link_to "Back", :back %>
+        <div class="py-2 d-flex" id="editbutttons">
+          <div>
+            <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", id:"btndangeredit", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+          </div>
+          <div>
+            <%= link_to "Back", :back %>
+          </div>
+        </div>
       </div>
   </div>
 </div>
