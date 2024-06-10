@@ -1,0 +1,24 @@
+
+
+.custom-input {
+  font-family: 'Poppins';
+  border: 1px solid #B0B0B0;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #F7F6F6;
+}
+
+.custom-boolean-input {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0px;
+  justify-content: center;
+}
+
+.custom-boolean-input label {
+  margin-right: 4px; /* Space between label and checkbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

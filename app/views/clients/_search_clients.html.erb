@@ -1,12 +1,14 @@
-<div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center">
-  <%# style="height: 50%" %>
-
-  <h2>Check if your client is crazy!</h2>
+<div class="container container-search d-flex flex-column">
+  <div>
+  <h2 id="headsearch">Check if your client is crazy!</h2>
+  </div>
   <div class="d-flex align-items-center justify-content-center">
-    <%= form_with url: clients_path, method: :get, local: true, class: 'search-form', data: {client_list_target: "form"} do %>
+    <%= form_with url: clients_path, method: :get, local: true, class: 'search-form', id: 'search-form', data: {client_list_target: "form"} do %>
+      <i class="fa-solid fa-user"></i>
       <%= text_field_tag :first, params[:first] , placeholder: "First Name", class: 'form-input ms-1', data: {client_list_target: "first", action: "keyup->client-list#update"} %>
       <%= text_field_tag :last, params[:last], placeholder: "Last Name", class: 'form-input ms-1', data: {client_list_target: "last", action: "keyup->client-list#update"} %>
-      <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1', data: {client_list_target: "phone", action: "keyup->client-list#update"} %>
+      <i class="fa-solid fa-phone"></i>
+      <%= text_field_tag :phone, params[:phone], placeholder: "Phone Number", class: 'form-input ms-1', id:'phone', data: {client_list_target: "phone", action: "keyup->client-list#update"} %>
       <%= submit_tag "Search", class: 'search-button' %>
     <% end %>
   </div>

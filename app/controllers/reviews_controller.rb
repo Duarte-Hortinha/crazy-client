@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
     @client = Client.find(@booking.client.id)
 
     # here comes the logic how to calculate the CCR , could be in another method
-    new_ccr = udpate_ccr
+    new_ccr = update_ccr
 
     if @client.update(ccr: new_ccr)
       # alert user that ccr was updated
@@ -40,18 +40,16 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def udpate_ccr
+  def update_ccr
     if @review.attendance
       if @review.punctuality >= 30
-        @client.ccr *= ((120 - @review.punctuality)/120)*0.95
-        @client.round(1)
+        new_ccr = @client.ccr*(((120 - @review.punctuality)/120)*0.95)
       else
-        @client.ccr *= 0.98 # 15 minute delay or less
-        @client.round(1)
+        new_ccr = @client.ccr*0.98 # 15 minute delay or less
       end
     else
-      @client.ccr *= 0.9
-      @client.round(1)
+      new_ccr = @client.ccr*0.9
     end
+    new_ccr.round(1)
   end
 end
