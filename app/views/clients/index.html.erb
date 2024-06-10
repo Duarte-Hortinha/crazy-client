@@ -3,12 +3,11 @@
     <div data-controller="client-list">
       <%= render "clients/search_clients" %>
       <% if params_blank?(params) %>
-        <% if @clients.empty? %>
+      <% elsif @clients.empty? %>
           <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center">
             <h3>No clients match your search criteria</h3>
             <%= link_to "Add Client", new_client_path, class:"btn btn-primary text-nowrap align-middle mt-3" %>
           </div>
-        <% end %>
       <% end %>
         <%= render "shared/list" %>
     </div>
