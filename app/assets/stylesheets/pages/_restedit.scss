@@ -1,0 +1,25 @@
+#restaurantedit {
+  width: 36rem;
+}
+
+.form-inputs .input-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adjust gap as needed */
+  margin-bottom: 16px; /* Space below each group */
+}
+
+.form-inputs .input-group .form-group {
+  flex: 1;
+  min-width: 0; /* Prevent overflow */
+}
+
+#btndangeredit {
+  background-color: $red;
+  color: white;
+}
+
+#btndangeredit:hover {
+  background-color: #CC352B;
+  color: white;
+}

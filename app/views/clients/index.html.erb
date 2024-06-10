@@ -2,7 +2,6 @@
   <div class="container mb-4 pt-4">
     <div data-controller="client-list">
       <%= render "clients/search_clients" %>
-
       <% if params_blank?(params) %>
         <% if @clients.empty? %>
           <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center">
