@@ -8,7 +8,7 @@
   padding: 30px;
   background:white;
   border-radius: 10px;
-  box-shadow: 0px 0px 2px #D9D9D9;
+  box-shadow: 0px 0px 10px #D9D9D9;
   width: 78%;
  }
 
@@ -87,4 +87,10 @@
   margin-top: 14px;
   margin-left: 25px;
   margin-right: 30px;
+}
+
+#listcard {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #D9D9D9;
 }
