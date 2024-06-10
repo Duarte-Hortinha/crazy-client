@@ -1,5 +1,9 @@
 #restaurantedit {
-  width: 36rem;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 10px #D9D9D9;
+  width: 38rem;
+  padding: 1.5rem;
 }
 
 .form-inputs .input-group {
@@ -22,4 +26,9 @@
 #btndangeredit:hover {
   background-color: #CC352B;
   color: white;
+}
+
+#editbutttons {
+  align-items: flex-end;
+  justify-content: space-between;
 }
