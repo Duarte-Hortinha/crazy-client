@@ -1,26 +1,69 @@
-  <div class="container content-container">
-    <div class="d-flex justify-content-between">
+<div class="container content-container">
+  <div class="container pt-4 pb-4" data-client-list-target="list">
 
-      <div class="m-7 gep-top mt-4">
-        <h1><%= @booking.client.first_name%> <%= @booking.client.last_name%>'s Booking | CCR - <%= @booking.client.ccr %></h1>
-        <br>
-        <h3> 📞<%= @booking.client.phone_number %></h3>
-        <br>
-        <h3>🕜 <%= @booking.booking_start.strftime('%I:%M') %> | <%= @booking.booking_start.strftime('%b %d, %Y') %> </h3>
-        <br>
-        <h4>👥 <%= @booking.party_count %></h4>
-        <br>
-        <h3>Table nº: <%= rand(20..60) %></h3>
-        <br>
-        <br>
-        <h4>Comment:</h4>
+    <%# circle progress bar %>
+    <% progress_color = @client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
+    <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
+    <style>
+      circle-progress::part(circle) {
+        stroke: grey;
+        stroke-width: 15;
+      }
+
+
+      circle-progress::part(text) {
+        fill: black;
+        font-size: 1.5rem;
+        font-weight: 100;
+      }
+
+      circle-progress[style]::part(value) {
+        stroke: var(--value-stroke-color);
+        stroke-width: 15;
+      }
+    </style>
+
+    <div class="container row justify-content-center">
+      <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2 bg-white">
+
+        <div class="flex-item m-4">
+          <circle-progress value="<%= @client.ccr %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
+        </div>
+
+        <div class="flex-item flex-grow-1 m-4">
+          <div class="d-flex align-items-start mb-2">
+            <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
+          </div>
+          <div>
+            <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
+          </div>
+        </div>
+
+        <div class="flex-item me-4">
+          <div class="align-items-center mt-4">
+            <%#= link_to "Book now", new_client_booking_path(@client), class: "btn btn-outline-primary rounded-3" %>
+          <div class="col"> <p><%= link_to "Client Details", client_path(@booking.client), class:"btn btn-primary w-100" %></p> </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column justify-content-center p-2 mt-5 reviews-main-card bg-white">
+      <h3 class="d-flex justify-content-center p-2">Booking Details</h3>
+      <div class="gep-top mt-4 row align-items-center d-flex justify-content-between p-2">
+        <div class="col h4 text-center"><p> 🕔 &nbsp; <%= @booking.booking_start.strftime('%I:%M') %> | <%= @booking.booking_start.strftime('%b %d, %Y') %> </p></div>
+        <div class="col h4 text-center"><p> 👥 &nbsp; <%= @booking.party_count %></p></div>
+        <div class="col h4 text-center"><p>Table nº:&nbsp; <%= rand(20..60) %></p></div>
+      </div>
+      <div class="p-2 bg-light">
+        <h3>Comment:</h3>
         <p><%= @booking.comment %></p>
-          <div class="m-7 gep-top mt-4 row align-items-start">
-            <div class="col"><p><%= link_to "Client Details", client_path(@booking.client), class:"btn btn-primary" %></p> </div>
-            <div class="col"> <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p> </div>
-            <div class="col"> <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p> </div>
+        </div>
+          <div class="mt-4 d-flex flex-nowrap">
+            <div class="order-1 p-2"> <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p> </div>
+            <div class="order-2 p-2"> <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p> </div>
           </div>
       </div>
 
     </div>
-  </div>
+</div>
