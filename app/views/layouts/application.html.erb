@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.css">
 
   </head>
 
@@ -22,5 +23,6 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
+    <%= javascript_importmap_tags %>
   </body>
 </html>
