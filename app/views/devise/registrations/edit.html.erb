@@ -1,16 +1,20 @@
-<div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+<div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4" id="restaurantedit">
   <div class="container column justify-content-center">
 
-      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+      <h2>Edit <%= resource.name.to_s.humanize %></h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
-          <%= f.input :name, required: true, autofocus: true %>
-          <%= f.input :ccr_acceptance, required: true, autofocus: true %>
-          <%= f.input :capacity, required: true, autofocus: true %>
+          <div class="input-group">
+            <%= f.input :email, required: true, autofocus: true %>
+            <%= f.input :name, required: true, autofocus: true %>
+          </div>
+          <div class="input-group">
+            <%= f.input :ccr_acceptance, required: true, autofocus: true %>
+            <%= f.input :capacity, required: true, autofocus: true %>
+          </div>
           <%= f.input :photo, as: :file %>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -37,7 +41,7 @@
 
       <div class="py-4">
         <div class="py-2">Unhappy?</div>
-        <div class="py-2"> <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+        <div class="py-2"> <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", id:"btndangeredit", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
       </div>
 
       <div class="py-2">
