@@ -48,27 +48,61 @@ export default class extends Controller {
         Last Name: ${lastName}
         Phone Number: ${phoneNumber}`,
       background: "#4361EE",
-      showDenyButton: true,
+      // showDenyButton: true,
       showCancelButton: true,
-      confirmButtonText: "Create",
-      denyButtonText: "Go Back"
+      confirmButtonText: "Create", // confirm button always here
+      // denyButtonText: "Go Back",
+      cancelButtonText: "Go Back"
 
-    }).then((result) => {
+    }).then(async (result) => {
       /* Read more about isConfirmed, isDenied below */
+      console.log(result.value);
       if (result.value) {
         const url = `${window.location.origin}/clients`
 
-        fetch(url, {
-          method: "POST",
-          headers: { "Accept": "text/plain"},
-          body: new FormData(this.formTarget)
-        }).then(response => response.text())
-        .then(data => {
-          Swal.fire("Client created!", "", "success");
-          this.formTarget.outerHTML = data
-        })
+        try {
+          const result = await fetch(url, {
+            method: "POST",
+            headers: { "Accept": "text/plain"},
+            body: new FormData(this.formTarget)
+          });
+
+          const data = await result.text();
+
+
+
+            // Swal.fire("Client created!", "", "success");
+          Swal.fire({
+            title: "Success: Client created!",
+            background: "#4361EE",
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: "OK",
+            // denyButtonText: "Go Back"
+          });
+          this.formTarget.outerHTML = data;
+
+        } catch (e) {
+
+          console.error(e)
+          Swal.fire({   // I click on the create but there is error on the inputs
+            title: "Error: Client not created...",
+            background: "#4361EE",
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: "Go Back",
+            // denyButtonText: "Go Back"
+          })
+        }
       } else {
-        Swal.fire("Client not created", "", "info");
+        Swal.fire({
+          title: "Client creation canceled!",
+          background: "#4361EE",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "Go Back",
+          // denyButtonText: "Go Back"
+        })
       }
     });
   }
