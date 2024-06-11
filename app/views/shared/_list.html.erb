@@ -59,6 +59,9 @@
             </div>
       <% end %>
     <% else %>
-      <p></p>
+          <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center" id="nosearchcont">
+            <h3>No clients match your search criteria</h3>
+            <%= link_to "Add Client", new_client_path(@my_params), class:"btn btn-primary text-nowrap align-middle mt-3" %>
+          </div>
     <% end %>
-    </div>
+</div>

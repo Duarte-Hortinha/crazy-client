@@ -4,12 +4,12 @@ class ClientsController < ApplicationController
   def index
     @restaurant = current_restaurant
 
-    my_params = {}
-    my_params[:first_name] = params[:first] if params[:first].present?
-    my_params[:last_name] = params[:last] if params[:last].present?
-    my_params[:phone_number] = params[:phone] if params[:phone].present?
+    @my_params = {}
+    @my_params[:first_name] = params[:first] if params[:first].present?
+    @my_params[:last_name] = params[:last] if params[:last].present?
+    @my_params[:phone_number] = params[:phone] if params[:phone].present?
 
-    if my_params.empty?
+    if @my_params.empty?
       @clients = Client.all
     else
       @clients = Client.filter(params[:first].downcase.capitalize, params[:last].downcase.capitalize, params[:phone])
@@ -27,6 +27,9 @@ class ClientsController < ApplicationController
   end
 
   def new
+    @first_fill = params[:first_name]
+    @last_fill = params[:last_name]
+    @phone_fill = params[:phone_number]
     @client = Client.new
   end
 

@@ -2,6 +2,7 @@
 
   <div class="container column justify-content-center">
 
+  <div class="form-card">
     <div class="row py-2 d-flex justify-content-center">
       <h2 class="d-flex justify-content-center">Booking for client  </h2>
       <h4 class="d-flex justify-content-center"> <%= @booking.client.first_name %> <%= @booking.client.last_name %> <i class="fa-solid fa-phone"></i> <%= @booking.client.phone_number%></h4>
@@ -15,6 +16,6 @@
         <span class="py-2 d-flex justify-content-center"><%= f.submit 'Update booking!', class:"text-decoration-none btn btn-info rounded-3 w-100" %></span>
       <% end %>   <!-- Guys don't place divs inside of the simple form, it makes the action not work! -->
     </div>
-
+  </div>
   </div>
 </div>

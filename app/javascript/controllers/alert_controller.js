@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   showAlert(event) {
-    event.preventDefault();  // Won't this not redirect ? ... problem corrected bellow
+    event.preventDefault();
     let book = event.currentTarget.children[0];
     let name = book.dataset.clientLastName;
     let ccr = book.dataset.ccrAcceptance;
@@ -21,8 +21,8 @@ export default class extends Controller {
       title: `⚠️Warning⚠️
         Crazy Client!!!`,
       text: `Mr ${name} is bellow your ${ccr} CCR acceptance rate`,
-      width: "32em",
-      padding: "8em",
+      width: "48em",
+      padding: "12em",
       color: "#fffff",
       background: "#fff url(https://answerfirst.com/wp-content/uploads/2016/07/how-to-speak-to-angry-customers.jpg)",
       backdrop: `
@@ -41,5 +41,26 @@ export default class extends Controller {
       }
     });
 
+  };
+
+  confirmAlert(event) {
+    event.preventDefault();
+    Swal.fire({
+      title: "Are you sure you want to create the following client?",
+      text: "The client inputed information should come here",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Create",
+      denyButtonText: `Go Back`
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Client created!", "", "success");
+      } else if (result.isDenied) {
+        Swal.fire("Client not created", "", "info");
+      }
+    });
   }
+
 }
