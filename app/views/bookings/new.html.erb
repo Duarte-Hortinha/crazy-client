@@ -7,10 +7,9 @@
         <h2 class="d-flex justify-content-center">Book a table for </h2>
         <h4 class="d-flex justify-content-center"><strong><%= @client.first_name %> <%= @client.last_name %> </strong> <i class="fa-solid fa-phone ms-3 me-2"></i> <%= @client.phone_number%></h4>
       </div>
-
       <div class="py-2">
         <%= simple_form_for [@client, @booking], data: { controller: 'datepicker' } do |f| %>
-          <%= f.input :booking_start, :label => "Date", as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
+          <%= f.input :booking_start, :label => false, as: :string, input_html: { class: "d-none", data: { datepicker_target: "bookingStart" } } %>
           <%= f.input :party_count, as: :integer, input_html: { min: 1, max: 50, step: 1 } %>
           <%= f.input :comment, hint: 'optional', as: :string %>
             <div class="d-flex justify-content-center">
