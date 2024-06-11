@@ -1,11 +1,16 @@
-<div class="d-flex content-container justify-content-center" data-controller="alert">
-  <%= simple_form_for @client do |f| %>
-    <%= f.input :first_name, placeholder: 'James' %>
-    <%= f.input :last_name, placeholder: 'Mcmuffin' %>
-    <%= f.input :phone_number, placeholder: '+45 213 5432' %>
-    <span data-action="click->alert#confirmAlert">
-      <%= f.submit class: "btn btn-info w-100",
-      data: { client_first_name: "replace with params", client_last_name: "replace with params", client_phone_number: "replace with params" } %>
-    </span>
-  <% end %>
+
+<div class="content-container">
+  <div class="d-flex justify-content-center" data-controller="alert">
+    <div class="form-card">
+      <%= simple_form_for @client do |f| %>
+        <%= f.input :first_name, input_html: {value: @first_fill} %>
+        <%= f.input :last_name, input_html: {value: @last_fill} %>
+        <%= f.input :phone_number, input_html: {value: @phone_fill} %>
+        <span data-action="click->alert#confirmAlert">
+          <%= f.submit class: "btn btn-info w-100",
+          data: { client_first_name: "replace with params", client_last_name: "replace with params", client_phone_number: "replace with params" } %>
+        </span>
+      <% end %>
+    </div>
+  </div>
 </div>
