@@ -66,7 +66,7 @@ portuguese_last_names = [
   second_digit = [1, 2, 3, 6].sample
   phone_number = "9#{second_digit}#{Faker::Number.number(digits: 7)}"
   ccr = rand(0.0..5.0).round(1)
-  
+
 
   Client.create!(
     first_name: first_name,
@@ -200,22 +200,22 @@ restaurant_galedo = Restaurant.create!(
   capacity: 100
 )
 
-# client_herique = Client.create!(
-#   first_name: "Herique",
-#   last_name: "Antunes",
-#   phone_number: "911124242",
-#   ccr: 4.0
-# )
+client_herique = Client.create!(
+  first_name: "Herique",
+  last_name: "Antunes",
+  phone_number: "911124242",
+  ccr: 4.0
+)
 
 
-# booking_herique = Booking.create!(
-#   booking_start: DateTime.new(2024, 6, 10, 18, 0, 0),
-#   booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
-#   comment: "Anniversary dinner",
-#   party_count: 2,
-#   restaurant_id: restaurant_galedo.id,
-#   client_id: client_herique.id
-# )
+booking_herique = Booking.create!(
+  booking_start: DateTime.new(2024, 6, 12, 18, 0, 0),
+  booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
+  comment: "Anniversary dinner",
+  party_count: 2,
+  restaurant_id: restaurant_galedo.id,
+  client_id: client_herique.id
+)
 
 # review_herique = Review.create!(
 #   punctuality: 30,
