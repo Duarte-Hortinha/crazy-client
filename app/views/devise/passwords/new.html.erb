@@ -1,33 +1,35 @@
-<div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+<div class="content-container">
+  <div class="container col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
 
-  <div class="container form-card column justify-content-center">
+    <div class="container form-card column justify-content-center">
 
-    <div class="py-2">
-      <h2>Forgot your password?</h2>
+      <div class="py-2">
+        <h2>Forgot your password?</h2>
+      </div>
+
+      <div class="py-2">
+        <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+          </div>
+      </div>
+
+      <div class="py-2">
+
+            <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary rounded-3" %>
+
+        <% end %>
+      </div>
+
+      <div class="py-2">
+        <%= render "devise/shared/links" %>
+      </div>
+
     </div>
-
-    <div class="py-2">
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
-
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" } %>
-        </div>
-    </div>
-
-    <div class="py-2">
-
-          <%= f.button :submit, "Send me reset password instructions", class: "btn btn-primary rounded-3" %>
-
-      <% end %>
-    </div>
-
-    <div class="py-2">
-      <%= render "devise/shared/links" %>
-    </div>
-
   </div>
 </div>
