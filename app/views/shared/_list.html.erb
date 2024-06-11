@@ -45,9 +45,10 @@
                       <%= link_to "see details", client_path(client), class: "details-link" %>
                     </div>
                     <div class="align-items-end mt-4" data-controller="alert">
-                      <% if client.ccr < 3.0 %> <!-- Very important tag sweetalert-wise -->
+                      <% if client.ccr < @restaurant.ccr_acceptance %> <!-- Very important tag sweetalert-wise -->
                         <span data-action="click->alert#showAlert">
-                          <%= link_to "Book now!", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3", data: { client_id: client.id }, id: "book_now" %>
+                          <%= link_to "Book now!", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3",
+                            data: { client_id: client.id, client_last_name: client.last_name, ccr_acceptance: @restaurant.ccr_acceptance } %>
                         </span>
                       <% else %>
                         <%= link_to "Book now", new_client_booking_path(client), class: "btn btn-outline-primary rounded-3" %>

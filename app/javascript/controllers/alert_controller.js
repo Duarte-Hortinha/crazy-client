@@ -14,11 +14,15 @@ export default class extends Controller {
 
   showAlert(event) {
     event.preventDefault();  // Won't this not redirect ? ... problem corrected bellow
+    let book = event.currentTarget.children[0];
+    let name = book.dataset.clientLastName;
+    let ccr = book.dataset.ccrAcceptance;
     Swal.fire({
       title: `⚠️Warning⚠️
-        This client is crazy!!!`,
-      width: 900,
-      padding: "10em",
+        Crazy Client!!!`,
+      text: `Mr ${name} is bellow your ${ccr} CCR acceptance rate`,
+      width: "32em",
+      padding: "8em",
       color: "#fffff",
       background: "#fff url(https://answerfirst.com/wp-content/uploads/2016/07/how-to-speak-to-angry-customers.jpg)",
       backdrop: `
@@ -29,10 +33,9 @@ export default class extends Controller {
       `
     }).then((result) => {
       if (result.value) {
-         const book = document.getElementById("book_now");
-         const clientId = book.dataset.clientId;
+         let clientId = book.dataset.clientId;
          // Construct the path for the new booking
-         const bookingPath = `/clients/${clientId}/bookings/new`;
+         let bookingPath = `/clients/${clientId}/bookings/new`;
          // Redirect to the new booking path
          window.location.href = bookingPath;
       }
