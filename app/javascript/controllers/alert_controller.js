@@ -4,13 +4,7 @@ import Swal from 'https://cdn.jsdelivr.net/npm/sweetalert2@8/src/sweetalert2.js'
 // Connects to data-controller="alert"
 export default class extends Controller {
 
-  // static targets = ["seeDetailsCrazyClientButton"]
-
-  connect() {
-    // this.seeDetailsCrazyClientButtonTarget.addEventListener('click', this.showAlert);
-    console.log("AlertController connected");
-    //this.element.addEventListener('click', this.showAlert.bind(this));
-  }
+  static targets = ["firstName", "lastName", "phoneNumber", "form"];
 
   showAlert(event) {
     event.preventDefault();
@@ -45,19 +39,35 @@ export default class extends Controller {
 
   confirmAlert(event) {
     event.preventDefault();
+    let firstName = this.firstNameTarget.value;
+    let lastName = this.lastNameTarget.value;
+    let phoneNumber = this.phoneNumberTarget.value;
     Swal.fire({
-      title: "Are you sure you want to create the following client?",
-      text: "The client inputed information should come here",
+      title: "Are you sure you want to create this client?",
+      text: `First Name: ${firstName}
+        Last Name: ${lastName}
+        Phone Number: ${phoneNumber}`,
+      background: "#4361EE",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Create",
-      denyButtonText: `Go Back`
+      denyButtonText: "Go Back"
 
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire("Client created!", "", "success");
-      } else if (result.isDenied) {
+      if (result.value) {
+        const url = `${window.location.origin}/clients`
+
+        fetch(url, {
+          method: "POST",
+          headers: { "Accept": "text/plain"},
+          body: new FormData(this.formTarget)
+        }).then(response => response.text())
+        .then(data => {
+          Swal.fire("Client created!", "", "success");
+          this.formTarget.outerHTML = data
+        })
+      } else {
         Swal.fire("Client not created", "", "info");
       }
     });
