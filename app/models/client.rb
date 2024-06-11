@@ -4,6 +4,7 @@ class Client < ApplicationRecord
   validates :phone_number, presence: true, uniqueness: true
   validates :first_name, :last_name, presence: true
   validates :ccr, numericality: { in: 0.0..5.0 }
+  # validates :phone_number, numericality: {   } - do this to admit "+" and only integers
 
   scope :by_first_name, ->(first_name) { where("first_name LIKE :prefix", prefix: "%#{first_name}%") if first_name.present? }
   scope :by_last_name, ->(last_name) { where("last_name LIKE :prefix", prefix: "%#{last_name}%") if last_name.present? }
