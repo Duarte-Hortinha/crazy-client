@@ -44,9 +44,9 @@ class ClientsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to new_client_path(@client) } # correct, goes to show page but @meme has to yield ID
+        format.html { redirect_to new_client_path(@client), status: :unprocessable_entity } # correct, goes to show page but @meme has to yield ID
         # this needs to redirect to a partial that creates a new client (client new)
-        format.text { render partial: "clients/newClient", locals: { client: @client}, formats: [:html] }
+        format.text { render partial: "clients/newClient", locals: { client: @client}, formats: [:html], status: :unprocessable_entity }
       end
     end
   end
