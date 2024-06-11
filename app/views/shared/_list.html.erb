@@ -58,10 +58,14 @@
               </div>
             </div>
       <% end %>
-    <% else %>
-          <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center" id="nosearchcont">
-            <h3>No clients match your search criteria</h3>
-            <%= link_to "Add Client", new_client_path(@my_params), class:"btn btn-primary text-nowrap align-middle mt-3" %>
-          </div>
-    <% end %>
+  <% elsif @my_params[:first_name].present? && @my_params[:last_name].present? && @my_params[:phone_number].present? %>
+    <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center" id="nosearchcont">
+      <h3>No clients match your search criteria</h3>
+      <%= link_to "Add Client", new_client_path(@my_params), class:"btn btn-primary text-nowrap align-middle mt-3" %>
+    </div>
+  <% else %>
+    <div class="container container-search d-flex flex-column align-items-center justify-content-center align-items-center justify-content-center" id="nosearchcont">
+      <h3>No clients match your search criteria, please enter all details.</h3>
+    </div>
+  <% end %>
 </div>
