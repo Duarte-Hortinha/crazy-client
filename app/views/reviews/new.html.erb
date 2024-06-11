@@ -1,6 +1,6 @@
 <div class="container content-container column col-14 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
-    <div class="container column justify-content-center" id="newreview">
-      <div class="row py-2 d-flex justify-content-center">
+    <div class="container column justify-content-center">
+      <div class="row form-card py-2 d-flex justify-content-center">
       <% if (Time.now < @booking.booking_start) %>
         <h3 class="h3 text-info">You <strong> cannot </strong> make a review for <%= @booking.client.first_name %> <em><%= @booking.client.last_name %></em> yet</h3>
         <h4 class="d-flex justify-content-center">The booking will happen at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></h4>
