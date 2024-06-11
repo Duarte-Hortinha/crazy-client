@@ -22,3 +22,11 @@
   flex-direction: column;
   gap: 10px;
 }
+
+#bookingsshowcont {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  width: 70%;
+}

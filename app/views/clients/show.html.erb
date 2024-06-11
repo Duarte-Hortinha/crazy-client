@@ -22,26 +22,26 @@
         }
       </style>
 
-        <div class="card-category-index d-flex p-2 bg-white mt-4" id="clientshowclient">
-          <div class="flex-item m-4">
-            <circle-progress value="<%= @client.ccr %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
-          </div>
+      <div class="card-category-index d-flex p-2 bg-white mt-4" id="clientshowclient">
+        <div class="flex-item m-4">
+          <circle-progress value="<%= @client.ccr %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
+        </div>
 
-          <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-4">
-            <div class="d-flex align-items-center justify-content-center mb-2">
-              <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
-            </div>
-            <div>
-              <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
-            </div>
+        <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-4">
+          <div class="d-flex align-items-center justify-content-center mb-2">
+            <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
           </div>
-
-          <div class="flex-item m-4">
-            <div class="align-items-end">
-              <%= link_to "Book now", new_client_booking_path(@client), class: "btn btn-outline-primary rounded-3" %>
-            </div>
+          <div>
+            <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
           </div>
         </div>
+
+        <div class="flex-item m-4">
+          <div class="align-items-end">
+            <%= link_to "Book now", new_client_booking_path(@client), class: "btn btn-outline-primary rounded-3" %>
+          </div>
+        </div>
+      </div>
 
       <%# circle progress bar %>
       <div class="container" id="reviewscont">
