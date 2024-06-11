@@ -4,6 +4,13 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(restaurant: @restaurant).order(booking_start: :asc)
   end
 
+  def without_reviews
+    @bookings_without_reviews = Booking
+      .left_outer_joins(:review)
+      .where(reviews: { id: nil })
+      .where(restaurant_id: current_restaurant.id)
+  end
+
   def show
     @booking = Booking.find(params[:id])
     @client = Client.find(@booking.client.id)

@@ -1,0 +1,39 @@
+
+<div class="content-container">
+
+    <div class="container" id="bookingscont">
+      <div class="book-title">
+      <h1 ><em><%= current_restaurant.name %></em>'s pendig reviews </h1>
+      </div>
+
+      <div class="container" id="mybookingscont">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Party Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">available time to review</th>
+                <th scope="col">Review</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% @bookings_without_reviews.each do |booking| %>
+                <tr data-controller="countdown" data-countdown-time-value="<%= booking.review_deadline.iso8601 %>" >
+                  <td class="py-3 align-middle"><strong><%= booking.booking_start.strftime('%b %d %H:%M') %></strong></td>
+                  <td class="py-3 align-middle">👤 <%= booking.party_count %> people</td>
+                  <td class="py-3 align-middle"><%= booking.client.first_name.capitalize %></td>
+                  <td class="py-3 align-middle"><%= booking.client.last_name.capitalize %></td>
+                  <td class="py-3 align-middle" data-countdown-target="clock"></td>
+                  <td class="py-3 align-middle">
+                    <%= link_to "Create a review", new_booking_review_path(booking), class:"btn btn-danger text-nowrap align-middle btn-table-style", id:"newreviewbtn" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+  </div>
+</div>

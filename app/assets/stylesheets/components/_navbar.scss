@@ -3,6 +3,7 @@
   background: white;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
   height: 11vh;
+  min-height: 4.5em;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -33,4 +34,8 @@
 
 .spacer {
   flex: 1;
+}
+
+#restaurant-name {
+  margin-bottom: 0px;
 }
