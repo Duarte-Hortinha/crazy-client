@@ -2,7 +2,7 @@
   <div class="container col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4" id="restaurantedit">
     <div class="container column justify-content-center">
 
-        <h2>Edit <%= resource.name.to_s.humanize %></h2>
+        <h2><%= resource.name.to_s.humanize %>'s profile</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
@@ -13,8 +13,8 @@
               <%= f.input :name, required: true, autofocus: true %>
             </div>
             <div class="input-group">
-              <%= f.input :ccr_acceptance, required: true, autofocus: true %>
-              <%= f.input :capacity, required: true, autofocus: true %>
+              <%= f.input :ccr_acceptance, required: true, autofocus: true, input_html: { autocomplete: "ccr_acceptance", min: 0, max: 5.0, step: 0.1, class:"custom-input", id:"editinput" } %>
+              <%= f.input :capacity, required: true, autofocus: true, input_html: { autocomplete: "capacity", min: 0, max: 200, step: 1, class:"custom-input", id:"editinput" } %>
             </div>
             <%= f.input :photo, as: :file %>
 
