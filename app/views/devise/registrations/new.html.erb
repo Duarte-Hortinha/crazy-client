@@ -22,11 +22,11 @@
           <%= f.input :ccr_acceptance,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "ccr_acceptance" }%>
+                      input_html: { autocomplete: "ccr_acceptance", min: 0, max: 5.0, step: 0.1, class:"custom-input"  }%>
           <%= f.input :capacity,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "capacity" }%>
+                      input_html: { autocomplete: "capacity", min: 0, max: 200, step: 1, class:"custom-input" }%>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
