@@ -40,12 +40,12 @@ class ClientsController < ApplicationController
     if @client.save
       respond_to do |format|
         format.html { redirect_to new_client_booking_path(@client) }
-        format.text { redirect_to new_client_booking_path(@client, format: :html)}
+        format.text { render partial: "bookings/newBooking", locals: { client: @client, booking: @booking }, formats: [:html] }
       end
     else
       respond_to do |format|
         format.html { redirect_to new_client_path(@client), status: :unprocessable_entity }
-        format.text { redirect_to new_client_path(@client), formats: [:html], status: :unprocessable_entity }
+        format.text { render partial: "clients/newClient", locals: { client: @client }, formats: [:html], status: :unprocessable_entity }
       end
     end
   end
