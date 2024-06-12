@@ -1,23 +1,26 @@
 <div class="container pt-2 pb-4 <%= 'd-none' if params_blank?(params) %>" data-client-list-target="list" id="listcont" >
   <%if @clients.any? %>
     <% @clients.each do |client| %>
-      <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
+      <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "#2DC653" : "#E53D31" %>
+      <% progress_fill = client.ccr >= @restaurant.ccr_acceptance ? "#B7EFC5" : "#F6BBB7" %>
       <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
         <style>
           circle-progress::part(circle) {
-            stroke: grey;
-            stroke-width: 15;
+            fill: var(--value-fill-color);
+            stroke: white;
+            stroke-width: 15px;
           }
 
           circle-progress::part(text) {
-            fill: black;
-            font-size: 1.5rem;
-            font-weight: 100;
+            fill: var(--value-stroke-color);;
+            font-size: 28px;
+            font-family: 'Poppins';
+            font-weight: 600;
           }
 
           circle-progress[style]::part(value) {
             stroke: var(--value-stroke-color);
-            stroke-width: 15;
+            stroke-width: 7px;
           }
         </style>
         <div class="container m-1 row justify-content-center">
@@ -25,7 +28,7 @@
               <img src="no_restaurant_image" alt="">
 
                 <div class="flex-item" id="circlescore"> <!-- client.booking.restaurant.ccr_acceptance - replace with 2.5, no errors -->
-                  <circle-progress value="<%= client.ccr.round(1) %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
+                  <circle-progress value="<%= client.ccr.round(1) %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>; --value-fill-color: <%= progress_fill %>;"></circle-progress>
                 </div>
 
 
