@@ -14,9 +14,9 @@ export default class extends Controller {
     Swal.fire({
       title: `⚠️Warning⚠️
         Crazy Client!!!`,
-      text: `Mr ${name} is bellow your ${ccr} CCR acceptance rate`,
-      width: "48em",
-      padding: "12em",
+      html: `<p>Mr <strong> ${name} </strong>is bellow your <em>${ccr}</em> CCR acceptance rate</p>`,
+      width: "42em",
+      padding: "8em",
       color: "#fffff",
       background: "#fff url(https://answerfirst.com/wp-content/uploads/2016/07/how-to-speak-to-angry-customers.jpg)",
       backdrop: `
