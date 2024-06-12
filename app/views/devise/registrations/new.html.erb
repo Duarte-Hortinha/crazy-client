@@ -1,51 +1,52 @@
-<div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+<div class="content-container">
+  <div class="container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
 
-  <div class="container form-card column justify-content-center">
+    <div class="form-card justify-content-center">
+      <div class="py-2">
+        <h2>Sign up</h2>
+    </div>
+
     <div class="py-2">
-      <h2>Sign up</h2>
-  </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="py-2">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :name,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "name" }%>
+          <%= f.input :ccr_acceptance,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "ccr_acceptance", min: 0, max: 5.0, step: 0.1, class:"custom-input"  }%>
+          <%= f.input :capacity,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "capacity", min: 0, max: 200, step: 1, class:"custom-input" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+        </div>
 
-      <div class="form-inputs">
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" }%>
-        <%= f.input :name,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "name" }%>
-        <%= f.input :ccr_acceptance,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "ccr_acceptance" }%>
-        <%= f.input :capacity,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "capacity" }%>
-        <%= f.input :password,
-                    required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" } %>
+
+      <div class="form-actions py-2 d-flex justify-content-center">
+        <%= f.button :submit, "Sign up", class: "btn btn-primary rounded-3" %>
+      </div>
+      <% end %>
       </div>
 
+      <div class="py-2">
+        <%= render "devise/shared/links" %>
+      </div>
 
-    <div class="form-actions py-2 d-flex justify-content-center">
-      <%= f.button :submit, "Sign up", class: "btn btn-primary rounded-3" %>
     </div>
-    <% end %>
-    </div>
-
-    <div class="py-2">
-      <%= render "devise/shared/links" %>
-    </div>
-
   </div>
-
 </div>

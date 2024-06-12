@@ -1,35 +1,37 @@
-<div class="container content-container column col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+<div class="content-container">
+  <div class="container col-12 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
 
-  <div class="container form-card column justify-content-center">
-    <div class="py-2">
-      <h2>Log in</h2>
-    </div>
+    <div class="form-card justify-content-center">
+      <div class="py-2">
+        <h2>Log in</h2>
+      </div>
 
+
+        <div class="py-2">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions py-2 d-flex justify-content-center">
+              <%= f.button :submit, "Log in", class: "btn btn-primary rounded-3" %>
+            </div>
+          <% end %>
+        </div>
 
       <div class="py-2">
-        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-inputs">
-            <%= f.input :email,
-                        required: false,
-                        autofocus: true,
-                        input_html: { autocomplete: "email" } %>
-            <%= f.input :password,
-                        required: false,
-                        input_html: { autocomplete: "current-password" } %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-          </div>
-
-          <div class="form-actions py-2 d-flex justify-content-center">
-            <%= f.button :submit, "Log in", class: "btn btn-primary rounded-3" %>
-          </div>
-        <% end %>
+        <div>
+          <%= render "devise/shared/links" %>
+        </div>
       </div>
 
-    <div class="py-2">
-      <div>
-        <%= render "devise/shared/links" %>
-      </div>
     </div>
-
   </div>
 </div>

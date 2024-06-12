@@ -62,7 +62,6 @@ h1 {
 .table th:first-child, .table td:first-child {
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
-
 }
 
 .table th:last-child, table td:last-child {
@@ -81,4 +80,10 @@ h1 {
 #newreviewbtn:hover {
   background-color: #CC352B;
   color: white;
+}
+.table > :not(caption) > * > * {
+  background-color: white;
+}
+.table {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }

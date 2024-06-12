@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, except: [:new, :create] do
+    collection do
+      get 'without_reviews'
+    end
     resources :reviews, except: [:index, :destroy]
   end
 

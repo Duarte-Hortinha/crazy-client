@@ -18,8 +18,14 @@
 .content-container {
   min-height: 83vh;
   margin-top: 11vh;
-  padding: 2vh;
+  padding: 4vh;
   background-color: #EDF0FD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
 }
 
 

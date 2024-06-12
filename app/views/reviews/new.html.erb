@@ -1,25 +1,27 @@
-<div class="container content-container column col-14 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
-    <div class="container column justify-content-center">
-      <div class="row form-card py-2 d-flex justify-content-center">
-      <% if (Time.now < @booking.booking_start) %>
-        <h3 class="h3 text-info">You <strong> cannot </strong> make a review for <%= @booking.client.first_name %> <em><%= @booking.client.last_name %></em> yet</h3>
-        <h4 class="d-flex justify-content-center">The booking will happen at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></h4>
-        <p><%= link_to "Go back to bookings registry", bookings_path, class: "btn btn-primary" %></p>
-      <% else %>
-        <h2 class="d-flex justify-content-center">Make a review for</h2>
-        <p class="d-flex justify-content-center"><em><%= @booking.client.first_name %> <%= @booking.client.last_name %></em>, at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></p>
-        <div class="py-2 d-flex justify-content-center">
-          <%= simple_form_for [@booking, @review], data: { controller: 'review' } do |f| %>
-            <div class="form-group custom-boolean-input">
-              <label for="<%= f.object_name %>_attendance">Did the client show up?</label>
-              <%= f.input :attendance, as: :boolean, label: false, inline_label: false, input_html: { data: { action: "review#change", review_target: "attendance" }, class: "custom-input" } %>
-            </div>
-            <%= f.input :punctuality, as: :integer, min: 0, input_html: { data: { review_target: "punctuality" }, min: 30, max: 120, step: 15, class:"custom-input" } %>
-            <%= f.input :comment, as: :string, input_html: {class:"custom-input"} %>
-            <%= f.submit 'Confirm this review', class: "btn btn-primary rounded-3", id:"reviewsubmit" %>
-          <% end %>
+<div class="content-container">
+  <div class="container col-14 col-8-sm col-md-6 col-lg-4 justify-content-center py-4">
+      <div class="container column justify-content-center">
+        <div class="row form-card d-flex justify-content-center" style="height: 29rem; width: 30rem; padding-top: 50px; padding-bottom: 50px;">
+        <% if (Time.now < @booking.booking_start) %>
+          <h3 class="h3 text-info">You <strong> cannot </strong> make a review for <%= @booking.client.first_name %> <em><%= @booking.client.last_name %></em> yet</h3>
+          <h4 class="d-flex justify-content-center">The booking will happen at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></h4>
+          <p><%= link_to "Go back to bookings registry", bookings_path, class: "btn btn-primary" %></p>
+        <% else %>
+          <h2 class="d-flex justify-content-center">Make a review for</h2>
+          <p class="d-flex justify-content-center"><em><%= @booking.client.first_name %> <%= @booking.client.last_name %></em>, at <%= @booking.booking_start.strftime('%b %d, %Y - %H:%M') %></p>
+          <div class="py-2 d-flex justify-content-center">
+            <%= simple_form_for [@booking, @review], data: { controller: 'review' } do |f| %>
+              <div class="form-group custom-boolean-input">
+                <label for="<%= f.object_name %>_attendance">Did the client show up?</label>
+                <%= f.input :attendance, as: :boolean, label: false, inline_label: false, input_html: { data: { action: "review#change", review_target: "attendance" }, class: "custom-input" } %>
+              </div>
+              <%= f.input :punctuality, as: :integer, min: 0, input_html: { data: { review_target: "punctuality" }, min: 30, max: 120, step: 15, class:"custom-input" } %>
+              <%= f.input :comment, as: :string, input_html: {class:"custom-input"} %>
+              <%= f.submit 'Confirm this review', class: "btn btn-primary rounded-3", id:"reviewsubmit" %>
+            <% end %>
+          </div>
+        <% end %>
         </div>
-      <% end %>
       </div>
-    </div>
+  </div>
 </div>

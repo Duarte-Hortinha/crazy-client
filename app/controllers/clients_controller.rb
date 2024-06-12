@@ -36,10 +36,18 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     @client.ccr = 5.0
+    @booking = Booking.new
     if @client.save
-      redirect_to new_client_booking_path(@client) # correct, goes to show page but @meme has to yield ID
+      respond_to do |format|
+        format.html { redirect_to new_client_booking_path(@client) } # correct, goes to show page but @meme has to yield ID
+        format.text { render partial: "bookings/newBooking", locals: { booking: @booking, client: @client}, formats: [:html] }
+      end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { redirect_to new_client_path(@client), status: :unprocessable_entity } # correct, goes to show page but @meme has to yield ID
+        # this needs to redirect to a partial that creates a new client (client new)
+        format.text { render partial: "clients/newClient", locals: { client: @client}, formats: [:html], status: :unprocessable_entity }
+      end
     end
   end
 
