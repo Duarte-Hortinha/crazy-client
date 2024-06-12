@@ -232,8 +232,8 @@ restaurant_galedo = Restaurant.create!(
 
 client_herique = Client.create!(
   first_name: "Herique",
-  last_name: "Antunes",
-  phone_number: "911124242",
+  last_name: "Nunes",
+  phone_number: "914928470",
   ccr: 4.0
 )
 
