@@ -237,15 +237,14 @@ client_herique = Client.create!(
   ccr: 4.0
 )
 
-
-booking_herique = Booking.create!(
-  booking_start: DateTime.new(2024, 6, 12, 18, 0, 0),
-  booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
-  comment: "Anniversary dinner",
-  party_count: 2,
-  restaurant_id: restaurant_galedo.id,
-  client_id: client_herique.id
-)
+# booking_herique = Booking.create!(
+#   booking_start: DateTime.new(2024, 6, 12, 18, 0, 0),
+#   booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
+#   comment: "Anniversary dinner",
+#   party_count: 2,
+#   restaurant_id: restaurant_galedo.id,
+#   client_id: client_herique.id
+# )
 
 # review_herique = Review.create!(
 #   punctuality: 30,
