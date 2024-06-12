@@ -8,7 +8,7 @@
 
       <div class="container" id="mybookingscont">
         <% if @bookings.empty? %>
-          <p class="d-flex text-justify-space-around"></p><%= "You don't have any confirmed bookings yet!" %>
+          <h4 class="d-flex justify-content-center"><%= "You don't have any bookings yet!" %></h4>
         <% else %>
           <table class="table">
             <thead>
