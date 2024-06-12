@@ -1,12 +1,13 @@
 <div class="content-container">
-  <div class="d-flex justify-content-center">
-    <div class="form-card" data-controller="alert">
-      <%= simple_form_for client, html: {data: {alert_target: "form"}} do |f|  %>
-        <%= f.input :first_name, input_html: { value: @first_fill, data: { alert_target: "firstName" } } %>
-        <%= f.input :last_name, input_html: { value: @last_fill, data: { alert_target: "lastName" } } %>
-        <%= f.input :phone_number, input_html: { value: @phone_fill, data: { alert_target: "phoneNumber" } } %>
-        <%= f.button :submit, class: "btn btn-info w-100", data: { action: "click->alert#confirmAlert" }  %>
-      <% end %>
+
+    <div class="form-card d-flex flex-column justify-content-center" data-controller="alert">
+      <div>
+        <%= simple_form_for client, html: {data: {alert_target: "form"}} do |f|  %>
+          <%= f.input :first_name, input_html: { value: @first_fill, data: { alert_target: "firstName" } } %>
+          <%= f.input :last_name, input_html: { value: @last_fill, data: { alert_target: "lastName" } } %>
+          <%= f.input :phone_number, input_html: { value: @phone_fill, data: { alert_target: "phoneNumber" } } %>
+          <%= f.button :submit, class: "btn btn-info w-100", data: { action: "click->alert#confirmAlert" }  %>
+        <% end %>
+      </div>
     </div>
-  </div>
 </div>
