@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
   def update_ccr
     if @review.attendance
       if @review.punctuality >= 30
-        new_ccr = @client.ccr*(((120 - @review.punctuality)/120)*0.95)
+        new_ccr = @client.ccr*(((120.0 - @review.punctuality)/120.0)*0.95)
       else
         new_ccr = @client.ccr*0.98 # 15 minute delay or less
       end
