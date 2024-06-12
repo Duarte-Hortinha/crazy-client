@@ -17,6 +17,17 @@
   box-shadow: none;
 }
 
+#bookingshowclient {
+  width: 24rem;
+  height: 25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  box-shadow: none;
+}
+
 #reviewscont {
   display: flex;
   flex-direction: column;
