@@ -10,7 +10,7 @@
         </div>
         <div class="py-2">
           <%= simple_form_for @booking, data: { controller: 'datepicker' } do |f| %>
-            <%= f.input :booking_start, :label => false, as: :string, input_html: { data: { datepicker_target: "bookingStart" } } %>
+            <%= f.input :booking_start, :label => false, as: :string, input_html: {class: "d-none", data: { datepicker_target: "bookingStart" } } %>
             <%= f.input :party_count, as: :integer, input_html: { min: 1, max: 50, step: 1 } %>
             <%= f.input :comment, as: :string %>
             <span class="py-2 d-flex justify-content-center"><%= f.submit 'Update booking!', class:"text-decoration-none btn btn-info rounded-3 w-100" %></span>
