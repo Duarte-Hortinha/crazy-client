@@ -28,23 +28,29 @@
       <div class="card-category-index d-flex p-2 bg-white mt-4" id="clientshowclient">
         <%# <div class="card-category-index col-12 col-md-10 col-lg-8  d-flex flex-row justify-content-between p-2 bg-white"> %>
 
-          <div class="flex-item m-4">
+          <div class="flex-item m-1">
             <circle-progress value="<%= @client.ccr %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
           </div>
 
-          <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-4">
-            <div class="d-flex align-items-center justify-content-center mb-2">
+          <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-3">
+            <div class="d-flex align-items-center justify-content-center mb-1">
               <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
             </div>
             <div>
               <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
             </div>
+            <br>
+            <div>
+              <p><i class="fa-solid fa-clock"></i> <%= @booking.booking_start.strftime('%I:%M') %> | <%= @booking.booking_start.strftime('%b, %d') %></p>
+            </div>
+
           </div>
 
-          <div class="flex-item m-4">
+          <div class="flex-item ">
             <div class="align-items-end">
               <%#= link_to "Book now", new_client_booking_path(@client), class: "btn btn-outline-primary rounded-3" %>
             <div class="col"> <p><%= link_to "Client Details", client_path(@booking.client), class:"btn btn-primary w-100" %></p> </div>
+
 
           </div>
           </div>
@@ -53,16 +59,18 @@
 
       <div id="bookings-card-detail" class="form-card d-flex flex-column justify-content-center p-2 reviews-main-card">
         <h3 class="d-flex justify-content-center p-2">Booking Details</h3>
-        <div class="gep-top mt-4 row align-items-center d-flex justify-content-between p-2">
-          <div class="col h4 text-center"><p> 🕔 &nbsp; <%= @booking.booking_start.strftime('%I:%M') %> | <%= @booking.booking_start.strftime('%b %d, %Y') %> </p></div>
-          <div class="col h4 text-center"><p> 👥 &nbsp; <%= @booking.party_count %></p></div>
-          <div class="col h4 text-center"><p>Table nº:&nbsp; <%= rand(20..60) %></p></div>
-        </div>
+          <div class="gep-top row align-items-center d-flex justify-content-between p-2">
+          <div class="col h4 text-center">
+            <p> <i class="fa-solid fa-user-group"></i> <%= @booking.party_count %></p></p>
+            </div>
+          <div class="col h4 text-center">
+            <p> <i class="fa-solid fa-chair"></i> <%= rand(20..60) %></p>
+          </div>
         <div class="p-2 bg-light">
           <h3>Comment:</h3>
           <p><%= @booking.comment %></p>
-          </div>
-            <div class="mt-5 d-flex justify-content-around flex-nowrap">
+        </div>
+            <div class="mt-5 d-flex justify-content-around flex-nowrap p-2">
               <div class="order-1 mt-2"> <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p> </div>
               <div class="order-2 mt-2"> <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p> </div>
             </div>
