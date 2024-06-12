@@ -77,13 +77,29 @@ h1 {
   margin-top: 10px;
 
 }
+#newreviewbtn{
+ background-color: #2DC653;
+ color: black;
+}
 #newreviewbtn:hover {
-  background-color: #CC352B;
-  color: white;
+  background-color: #B7EFC5;
 }
 .table > :not(caption) > * > * {
   background-color: white;
 }
 .table {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+.btn-danger {
+  background-color: #E53D31;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: #F6BBB7;
+}
+.btn-info {
+  background-color: #2DC653;
+}
+.btn-info:hover{
+  background-color: #B7EFC5;
 }
