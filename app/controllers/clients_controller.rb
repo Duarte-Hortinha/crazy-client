@@ -39,17 +39,17 @@ class ClientsController < ApplicationController
     @booking = Booking.new
     if @client.save
       respond_to do |format|
-        format.html { redirect_to new_client_booking_path(@client) } # correct, goes to show page but @meme has to yield ID
-        format.text { render partial: "bookings/newBooking", locals: { booking: @booking, client: @client}, formats: [:html] }
+        format.html { redirect_to new_client_booking_path(@client) }
+        format.text { redirect_to new_client_booking_path(@client, format: :html)}
       end
     else
       respond_to do |format|
-        format.html { redirect_to new_client_path(@client), status: :unprocessable_entity } # correct, goes to show page but @meme has to yield ID
-        # this needs to redirect to a partial that creates a new client (client new)
-        format.text { render partial: "clients/newClient", locals: { client: @client}, formats: [:html], status: :unprocessable_entity }
+        format.html { redirect_to new_client_path(@client), status: :unprocessable_entity }
+        format.text { redirect_to new_client_path(@client), formats: [:html], status: :unprocessable_entity }
       end
     end
   end
+
 
   def edit
     @client = Client.find(params[:id]) # getting the client ID, is this the way? - params[:id] possible -
