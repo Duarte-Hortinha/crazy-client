@@ -94,12 +94,14 @@ h1 {
   background-color: #E53D31;
   border: none;
   color: black;
+  border-radius: 7px;
 }
 .btn-danger:hover {
   background-color: #F6BBB7;
 }
 .btn-info {
   background-color: #2DC653;
+  border-radius: 7px;
 }
 .btn-info:hover{
   background-color: #B7EFC5;
@@ -129,4 +131,10 @@ h1 {
 }
 #canclebtn:hover {
   background-color: #F6BBB7;
+}
+#clientdetalis{
+  background-color: #E53D31;
+}
+.btn-primary {
+  border-radius: 7px;
 }
