@@ -151,10 +151,24 @@ puts 'Restaurant seed data created successfully!'
 
 puts 'creating booking seeds'
 
+booking_comments = [
+  "The client prefers steak.",
+  "Client's birthday celebration.",
+  "The client requested a table by the window.",
+  "Client's anniversary dinner.",
+  "The client is allergic to peanuts.",
+  "Client requested a vegan menu.",
+  "The booking is for a business lunch.",
+  "Client prefers a quiet table away from the kitchen.",
+  "The client is bringing a group of friends for a reunion.",
+  "Client requested a highchair for their toddler."
+]
+
+
 (1..200).each do |i|
   booking_start = Faker::Time.between(from: DateTime.new(2024, 6, 1, 11, 0, 0), to: DateTime.new(2024, 6, 25, 19, 0, 0))
   booking_end = booking_start + rand(1..4).hours
-  comment = Faker::Lorem.sentence
+  comment = booking_comments.sample
   party_count = rand(1..10)
   restaurant_id = Restaurant.pluck(:id).sample
   client_id = Client.pluck(:id).sample
@@ -173,12 +187,28 @@ puts 'Booking seed data created successfully!'
 
 puts 'creating reviews seeds'
 
+possible_punctuality_values = [30, 45, 60, 75, 90, 105, 120]
+
+reviews_comments = [
+  "The client was extremely rude and disrespectful to our staff.",
+  "Client arrived 30 minutes late without any prior notice, disrupting our seating arrangements.",
+  "The client left without paying the bill, causing inconvenience to the restaurant.",
+  "The client made a reservation but failed to show up, wasting a valuable table.",
+  "Client complained excessively about minor issues, creating a negative atmosphere for other diners.",
+  "The client was confrontational and argumentative throughout their dining experience.",
+  "Client left a mess at the table and showed no regard for the cleanliness of the restaurant.",
+  "The client's behavior was disruptive to other patrons, affecting their dining experience.",
+  "Client demanded unreasonable accommodations that were not within our restaurant's policies.",
+  "The client was verbally abusive towards our staff, making them uncomfortable and upset."
+]
+
+
 150.times do
   booking = Booking.order("RANDOM()").first # Select a random booking
   attendance = [true, false].sample
   punctuality = nil if attendance == false
-  punctuality ||= rand(0..90)  # Generate a random punctuality score if attendance is true
-  comment = Faker::Lorem.sentence
+  punctuality ||= possible_punctuality_values.sample
+  comment = reviews_comments.sample
 
   Review.create!(
     punctuality: punctuality,
