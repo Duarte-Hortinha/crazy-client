@@ -93,6 +93,7 @@ h1 {
 .btn-danger {
   background-color: #E53D31;
   border: none;
+  color: black;
 }
 .btn-danger:hover {
   background-color: #F6BBB7;
@@ -102,4 +103,30 @@ h1 {
 }
 .btn-info:hover{
   background-color: #B7EFC5;
+}
+#reviewsubmit {
+  background-color: #2DC653;
+  color: black !important;
+}
+#reviewsubmit:hover {
+  background-color: #B7EFC5 !important;
+}
+#btndangeredit {
+  background-color: #2DC653;
+}
+#update {
+  background-color: #2DC653;
+  color: black;
+  border: none;
+}
+#update:hover {
+  background-color: #B7EFC5;
+}
+#canclebtn {
+  background-color: #E53D31;
+  border: none;
+  color: black;
+}
+#canclebtn:hover {
+  background-color: #F6BBB7;
 }

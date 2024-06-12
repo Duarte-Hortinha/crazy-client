@@ -36,7 +36,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, "Update", class: "btn btn-primary rounded-3" %>
+            <%= f.button :submit, "Update", class: "btn btn-primary rounded-3", id:"update" %>
           </div>
         <% end %>
 
@@ -44,7 +44,7 @@
           <div class="py-2">Unhappy?</div>
           <div class="py-2 d-flex" id="editbutttons">
             <div>
-              <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", id:"btndangeredit", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+              <%= button_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger rounded-3", id:"canclebtn", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
             </div>
             <div>
               <%= link_to "Back", :back %>
