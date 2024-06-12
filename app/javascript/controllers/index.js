@@ -10,5 +10,5 @@ eagerLoadControllersFrom("controllers", application)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
 
-import AlertController from "./alert_controller";
-application.register("alert", AlertController);
+// import AlertController from "./alert_controller";
+// application.register("alert", AlertController);
