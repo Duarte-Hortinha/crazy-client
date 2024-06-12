@@ -29,10 +29,10 @@
 
         <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-4">
           <div class="d-flex align-items-center justify-content-center mb-2">
-            <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
+            <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>   
           </div>
-          <div>
-            <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
+          <div class="d-flex align-items-center justify-content-center">
+            <h3><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></h3>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
                         <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>YES</strong> |&nbsp;</p>
+                        <!-- <p>Showed up? <strong>YES</strong> |&nbsp;</p> -->
                         <% if booking.review.punctuality == 0 %>
                           <p>On time!</p>
                         <% else %>
@@ -68,8 +68,8 @@
                   <% else %>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
-                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did not show up at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>NO</strong></p>
+                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did <strong>not</strong> show up at <em><%= booking.restaurant.name %></em> &nbsp;</p>
+                        <!-- <p>| Showed up? <strong>NO</strong></p> -->
                       </div>
                       <%= link_to "See further review details", booking_review_path(booking, booking.review), class:"btn btn-info float-right" %>
                     </div>
@@ -93,7 +93,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
                         <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>YES</strong> |&nbsp;</p>
+                        <!-- <p>Showed up? <strong>YES</strong> |&nbsp;</p> -->
                         <% if booking.review.punctuality == 0 %>
                           <p>On time!</p>
                         <% else %>
@@ -105,8 +105,8 @@
                   <% else %>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
-                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did not show up at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>NO</strong></p>
+                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did <strong>not</strong> show up at <em><%= booking.restaurant.name %></em> &nbsp;</p>
+                        <!-- <p>| Showed up? <strong>NO</strong></p> -->
                       </div>
                       <%= link_to "See further review details", booking_review_path(booking, booking.review), class:"btn btn-info float-right" %>
                     </div>
