@@ -1,4 +1,4 @@
-<div class="container pt-2 pb-4 <%= 'd-none' if params_blank?(params) %>" data-client-list-target="list" id="listcont" >
+<div class="pt-2 pb-4 <%= 'd-none' if params_blank?(params) %>" data-client-list-target="list" id="listcont" >
   <%if @clients.any? %>
     <% @clients.each do |client| %>
       <% progress_color = client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
@@ -20,7 +20,7 @@
             stroke-width: 15;
           }
         </style>
-        <div class="container m-1 row justify-content-center">
+        <div class="cont-list-w-100 m-1 row justify-content-center">
             <div class="card-category-index col-12 col-md-10 col-lg-8 d-flex flex-wrap justify-content-between p-2 bg-white" id="listcard">
               <img src="no_restaurant_image" alt="">
 
