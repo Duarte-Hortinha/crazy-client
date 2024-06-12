@@ -1,5 +1,5 @@
 <div class="content-container">
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center container fixed-width-600">
   <div class="form-card" id="bookingsshowcont">
     <div data-client-list-target="list">
       <% progress_color = @client.ccr >= @restaurant.ccr_acceptance ? "#2DC653" : "#E53D31" %>
@@ -58,7 +58,7 @@
       </div>
 
       <div id="bookings-card-detail" class="form-card d-flex flex-column justify-content-center p-2 reviews-main-card">
-        <h3 class="d-flex justify-content-center p-2">Booking Details</h3>
+        <h3 class="d-flex justify-content-center p-2 mb-3">Booking Details</h3>
           <div class="gep-top row align-items-center d-flex justify-content-between p-2">
           <div class="col h4 text-center">
             <p> <i class="fa-solid fa-user-group"></i> <%= @booking.party_count %></p></p>
@@ -66,10 +66,12 @@
           <div class="col h4 text-center">
             <p> <i class="fa-solid fa-chair"></i> <%= rand(20..60) %></p>
           </div>
-        <div class="p-2 bg-light">
-          <h3>Comment:</h3>
-          <p><%= @booking.comment %></p>
+        <div class="p-2 mt-2 bg-light text-center">
+            <h4 class="pt-2">Comment:</h4>
         </div>
+          <div class="bg-light">
+            <p><%= @booking.comment %></p>
+          </div>
             <div class="mt-5 d-flex justify-content-around flex-nowrap p-2">
               <div class="order-1 mt-2"> <p><%= link_to "Update Booking", edit_booking_path(@booking), class:"btn btn-info" %></p> </div>
               <div class="order-2 mt-2"> <p><%= link_to "Delete Booking", booking_path(@booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'btn btn-danger' %></p> </div>
