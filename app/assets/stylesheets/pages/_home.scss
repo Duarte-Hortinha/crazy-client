@@ -9,7 +9,7 @@
   background:white;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,.3);
-  width: 78%;
+  padding-left: 10%;
  }
 
  .form-input {
@@ -66,7 +66,10 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 79%;
+}
+
+.cont-list-w-100 {
+  width: 100%;
 }
 
 .card-category-index {
@@ -93,12 +96,13 @@
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+  width: 100%
 }
 
 #nosearchcont {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 85%;
+  width: 100%;
   box-shadow: 0px 0px 10px rgba(0,0,0,.3);
 }

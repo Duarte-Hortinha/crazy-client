@@ -2,8 +2,14 @@
   <div class="app-body">
     <div class="container pt-4">
       <div data-controller="client-list">
-        <%= render "clients/search_clients" %>
-        <%= render "shared/list" %>
+        <div class="d-flex flex-column container">
+          <div class="w-100">
+            <%= render "clients/search_clients" %>
+          </div>
+          <div class="w-100">
+            <%= render "shared/list" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

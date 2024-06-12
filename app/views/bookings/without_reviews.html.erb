@@ -26,7 +26,7 @@
                   <td class="py-3 align-middle">👤 <%= booking.party_count %> people</td>
                   <td class="py-3 align-middle"><%= booking.client.first_name.capitalize %></td>
                   <td class="py-3 align-middle"><%= booking.client.last_name.capitalize %></td>
-                  <td class="py-3 align-middle" data-countdown-target=<%= "clock" if booking.booking_start < Time.now %>><%= "Booking not happened yet!" if booking.booking_start > Time.now %></td>
+                  <td class="py-3 align-middle" data-countdown-target=<%= "clock" if booking.booking_start < Time.now %>><%= "Booking yet to occur!" if booking.booking_start > Time.now %></td>
                   <td class="py-3 align-middle">
                     <%= link_to "Create a review", new_booking_review_path(booking),
                                 class: "btn btn-danger text-nowrap align-middle btn-table-style #{'disabled' if booking.booking_start > Time.now}",

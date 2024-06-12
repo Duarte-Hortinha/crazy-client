@@ -1,38 +1,40 @@
 <div class="content-container">
   <div class="form-card" id="clientshowcont">
       <%# circle progress bar %>
-      <% progress_color = @client.ccr >= @restaurant.ccr_acceptance ? "green" : "red" %>
+      <% progress_color = @client.ccr >= @restaurant.ccr_acceptance ? "#2DC653" : "#E53D31" %>
+      <% progress_fill = @client.ccr >= @restaurant.ccr_acceptance ? "#B7EFC5" : "#F6BBB7" %>
       <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script>
       <style>
         circle-progress::part(circle) {
-          stroke: grey;
-          stroke-width: 15;
+          fill: var(--value-fill-color);
+          stroke: white;
+          stroke-width: 15px;
         }
 
-
         circle-progress::part(text) {
-          fill: black;
-          font-size: 1.5rem;
-          font-weight: 100;
+          fill: var(--value-stroke-color);;
+          font-size: 28px;
+          font-family: 'Poppins';
+          font-weight: 600;
         }
 
         circle-progress[style]::part(value) {
           stroke: var(--value-stroke-color);
-          stroke-width: 15;
+          stroke-width: 7px;
         }
       </style>
 
       <div class="card-category-index d-flex p-2 bg-white mt-4" id="clientshowclient">
         <div class="flex-item m-4">
-          <circle-progress value="<%= @client.ccr.round(1) %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>;"></circle-progress>
+          <circle-progress value="<%= @client.ccr.round(1) %>" max="5.0" text-format="value" style="--value-stroke-color: <%= progress_color %>; --value-fill-color: <%= progress_fill %>;"></circle-progress>
         </div>
 
         <div class="d-flex flex-column align-items-center justify-content-center flex-item flex-grow-1 m-4">
           <div class="d-flex align-items-center justify-content-center mb-2">
             <h3><i class="fa-solid fa-user"></i>  <%= @client.first_name %> <%= @client.last_name %></h3>
           </div>
-          <div>
-            <p><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></p>
+          <div class="d-flex align-items-center justify-content-center">
+            <h3><i class="fa-solid fa-phone"></i> <%= @client.phone_number %></h3>
           </div>
         </div>
 
@@ -56,7 +58,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
                         <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>YES</strong> |&nbsp;</p>
+                        <!-- <p>Showed up? <strong>YES</strong> |&nbsp;</p> -->
                         <% if booking.review.punctuality == 0 %>
                           <p>On time!</p>
                         <% else %>
@@ -68,8 +70,8 @@
                   <% else %>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
-                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did not show up at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>NO</strong></p>
+                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did <strong>not</strong> show up at <em><%= booking.restaurant.name %></em> &nbsp;</p>
+                        <!-- <p>| Showed up? <strong>NO</strong></p> -->
                       </div>
                       <%= link_to "See further review details", booking_review_path(booking, booking.review), class:"btn btn-info float-right" %>
                     </div>
@@ -93,7 +95,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
                         <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> ate at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>YES</strong> |&nbsp;</p>
+                        <!-- <p>Showed up? <strong>YES</strong> |&nbsp;</p> -->
                         <% if booking.review.punctuality == 0 %>
                           <p>On time!</p>
                         <% else %>
@@ -105,8 +107,8 @@
                   <% else %>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex py-2">
-                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did not show up at <em><%= booking.restaurant.name %></em> |&nbsp;</p>
-                        <p>Showed up? <strong>NO</strong></p>
+                        <p>Mr <span class="fw-semibold"><%= booking.client.last_name %></span> did <strong>not</strong> show up at <em><%= booking.restaurant.name %></em> &nbsp;</p>
+                        <!-- <p>| Showed up? <strong>NO</strong></p> -->
                       </div>
                       <%= link_to "See further review details", booking_review_path(booking, booking.review), class:"btn btn-info float-right" %>
                     </div>
