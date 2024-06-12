@@ -12,7 +12,7 @@
           <%= f.input :party_count, as: :integer, input_html: {min: 1, max: 50, step: 1, class:"custom-input" } %>
           <%= f.input :comment, hint: 'optional', as: :string %>
             <div class="d-flex justify-content-center">
-          <%= f.submit 'Confirm this Booking', class:"text-decoration-none btn btn-info rounded-3" %>
+          <%= f.submit 'Confirm this Booking', class:"text-decoration-none btn btn-info rounded-3", id:"bookButton" %>
             </div>
         <% end %>
       </div>

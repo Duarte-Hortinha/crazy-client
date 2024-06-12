@@ -12,4 +12,8 @@ class Booking < ApplicationRecord
   def review_active?
     Time.current < review_deadline
   end
+
+  def time_until_review_deadline
+    review_deadline - Time.current
+  end
 end
