@@ -237,6 +237,51 @@ client_herique = Client.create!(
   ccr: 4.0
 )
 
+client_antonio1 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Silva",
+  phone_number: "930511600",
+  ccr: 4.5
+)
+
+client_antonio2 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Silva",
+  phone_number: "930511300",
+  ccr: 4.0
+)
+
+client_antonio3 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Silva",
+  phone_number: "910543305",
+  ccr: 3.2
+)
+
+client_antonio3 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Rola",
+  phone_number: "910543307",
+  ccr: 4.2
+)
+
+70.times do
+  booking_start = Faker::Time.between(from: DateTime.new(2024, 6, 10, 11, 0, 0), to: DateTime.new(2024, 6, 16, 15, 0, 0)) || Faker::Time.between(from: DateTime.new(2024, 6, 10, 19, 0, 0), to: DateTime.new(2024, 6, 16, 22, 0, 0))
+  booking_end = booking_start + rand(1..4).hours
+  comment = booking_comments.sample
+  party_count = rand(1..10)
+  restaurant_id = restaurant_galedo.id
+  client_id = Client.pluck(:id).sample
+
+  Booking.create!(
+    booking_start: booking_start,
+    booking_end: booking_end,
+    comment: comment,
+    party_count: party_count,
+    restaurant_id: restaurant_id,
+    client_id: client_id
+  )
+end
 # booking_herique = Booking.create!(
 #   booking_start: DateTime.new(2024, 6, 12, 18, 0, 0),
 #   booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
