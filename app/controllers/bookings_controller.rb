@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
     @bookings_without_reviews = Booking
       .left_outer_joins(:review)
       .where(reviews: { id: nil })
-      .where(restaurant_id: current_restaurant.id)
+      .where(restaurant_id: current_restaurant.id).order(booking_start: :asc)
   end
 
   def show
