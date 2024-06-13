@@ -42,11 +42,22 @@ export default class extends Controller {
     let firstName = this.firstNameTarget.value;
     let lastName = this.lastNameTarget.value;
     let phoneNumber = this.phoneNumberTarget.value;
+
+    function formatPhoneNumber(phoneNumber) {
+      if (phoneNumber.length === 9) {
+        return phoneNumber.match(/.{1,3}/g).join('-');
+      } else {
+        return phoneNumber;  
+      }
+    }
+
+    let formattedPhoneNumber = formatPhoneNumber(phoneNumber);
+
     Swal.fire({
       title: "Are you sure you want to create this client?",
       html: `<p><strong>First Name:</strong> ${firstName}</p>
          <p><strong>Last Name:</strong> ${lastName}</p>
-         <p><strong>Phone Number:</strong> ${phoneNumber}</p>`,
+         <p><strong>Phone Number:</strong> ${formattedPhoneNumber}</p>`,
       // text: `First Name: ${firstName}
       //   Last Name: ${lastName}
       //   Phone Number: ${phoneNumber}`,
