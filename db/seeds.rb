@@ -229,6 +229,89 @@ restaurant_galedo = Restaurant.create!(
   ccr_acceptance: 2.5,
   capacity: 100
 )
+client_pedro_elias = Client.create!(
+  first_name: "Pedro",
+  last_name: "Elias",
+  phone_number: "910663308",
+  ccr: 2.8
+)
+
+# Create bookings pedro for galeto
+booking_1 = Booking.create!(
+  booking_start: DateTime.new(2024, 6, 5, 12, 0, 0),
+  booking_end: DateTime.new(2024, 6, 5, 14, 0, 0),
+  comment: "Lunch with friends",
+  party_count: 4,
+  restaurant_id: restaurant_galedo.id,
+  client_id: client_pedro_elias.id
+)
+
+booking_2 = Booking.create!(
+  booking_start: DateTime.new(2024, 3, 15, 19, 0, 0),
+  booking_end: DateTime.new(2024, 3, 15, 21, 0, 0),
+  comment: "Dinner meeting",
+  party_count: 2,
+  restaurant_id: restaurant_galedo.id,
+  client_id: client_pedro_elias.id
+)
+
+booking_3 = Booking.create!(
+  booking_start: DateTime.new(2023, 11, 20, 13, 0, 0),
+  booking_end: DateTime.new(2023, 11, 20, 15, 0, 0),
+  comment: "Family lunch",
+  party_count: 5,
+  restaurant_id: restaurant_galedo.id,
+  client_id: client_pedro_elias.id
+)
+
+# Create pedro reviews for galeto
+Review.create!(
+  punctuality: 30,
+  comment: "Client left a mess at the table and showed",
+  attendance: true,
+  booking_id: booking_1.id
+)
+
+Review.create!(
+  punctuality: 30,
+  comment: "Client complained excessively about minor issues",
+  attendance: true,
+  booking_id: booking_2.id
+)
+
+Review.create!(
+  punctuality: 45,
+  comment: "Rude and disrespectful to our staff",
+  attendance: true,
+  booking_id: booking_3.id
+)
+
+# Create 15 reviews for Pedro Elias
+15.times do
+  # Select a random restaurant
+  restaurant = Restaurant.all.sample
+
+  # Create a booking for the review
+  booking_start_time = Faker::Time.between(from: DateTime.now - 1.year, to: DateTime.now)
+  booking_end_time = booking_start_time + rand(1..4).hours
+
+  booking = Booking.create!(
+    booking_start: booking_start_time,
+    booking_end: booking_end_time,
+    comment: "Dinner",
+    party_count: rand(1..10),
+    restaurant_id: restaurant.id,
+    client_id: client_pedro_elias.id
+  )
+
+  # Create a review for the booking
+  Review.create!(
+    punctuality: possible_punctuality_values.sample,
+    comment: reviews_comments.sample,
+    attendance: [true, false].sample,
+    booking_id: booking.id
+  )
+end
 
 client_herique = Client.create!(
   first_name: "Herique",
@@ -244,11 +327,21 @@ client_antonio1 = Client.create!(
   ccr: 4.5
 )
 
+# booking2 = Booking.create!(
+#   booking_start: DateTime.new(2024, 6, 12, 19, 0, 0),
+#   booking_end: DateTime.new(2024, 6, 12, 21, 0, 0),
+#   comment: "Business meeting",
+#   party_count: 3,
+#   restaurant_id: restaurant2.id,
+#   client_id: client2.id
+# )
+
+
 client_antonio2 = Client.create!(
   first_name: "Antonio",
   last_name: "Silva",
   phone_number: "930511300",
-  ccr: 4.0
+  ccr: 3.7
 )
 
 client_antonio3 = Client.create!(
@@ -258,30 +351,113 @@ client_antonio3 = Client.create!(
   ccr: 3.2
 )
 
-client_antonio3 = Client.create!(
+client_antonio4 = Client.create!(
   first_name: "Antonio",
   last_name: "Rola",
   phone_number: "910543307",
   ccr: 4.2
 )
 
+client_antonio5 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Silvestre",
+  phone_number: "967543639",
+  ccr: 4.6
+)
+
+client_antonio6 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Silvano",
+  phone_number: "927543428",
+  ccr: 2.6
+)
+
+client_antonio7 = Client.create!(
+  first_name: "Antonio",
+  last_name: "Simões",
+  phone_number: "927305428",
+  ccr: 1.6
+)
+
+client_john = Client.create!(
+  first_name: "John",
+  last_name: "Smith",
+  phone_number: "917305328",
+  ccr: 4.6
+)
+
+client_john2 = Client.create!(
+  first_name: "John",
+  last_name: "Adams",
+  phone_number: "917303753",
+  ccr: 4.8
+)
+
+client_john3 = Client.create!(
+  first_name: "John",
+  last_name: "Cena",
+  phone_number: "917349234",
+  ccr: 4.3
+)
+
+client_john4 = Client.create!(
+  first_name: "John",
+  last_name: "Miller",
+  phone_number: "917370234",
+  ccr: 4.3
+)
+
+
+
+
+
+
+
+
+
+# Define the possible booking start times
+possible_times = [
+  DateTime.new(2024, 6, 11, 12, 0, 0),
+  DateTime.new(2024, 6, 11, 12, 30, 0),
+  DateTime.new(2024, 6, 11, 13, 0, 0),
+  DateTime.new(2024, 6, 11, 13, 30, 0),
+  DateTime.new(2024, 6, 11, 14, 30, 0),
+  DateTime.new(2024, 6, 11, 19, 0, 0),
+  DateTime.new(2024, 6, 11, 19, 30, 0),
+  DateTime.new(2024, 6, 11, 20, 0, 0),
+  DateTime.new(2024, 6, 11, 20, 30, 0),
+  DateTime.new(2024, 6, 11, 21, 0, 0),
+  DateTime.new(2024, 6, 11, 21, 30, 0),
+  DateTime.new(2024, 6, 11, 22, 0, 0)
+]
+
 70.times do
-  booking_start = Faker::Time.between(from: DateTime.new(2024, 6, 10, 11, 0, 0), to: DateTime.new(2024, 6, 16, 15, 0, 0)) || Faker::Time.between(from: DateTime.new(2024, 6, 10, 19, 0, 0), to: DateTime.new(2024, 6, 16, 22, 0, 0))
-  booking_end = booking_start + rand(1..4).hours
+  # Choose a random date between 11th and 16th June 2024
+  random_date = Date.new(2024, 6, 11) + rand(0..5)
+
+  # Choose a random time from the possible times and adjust the date
+  booking_start_time = possible_times.sample.change(year: random_date.year, month: random_date.month, day: random_date.day)
+
+  # Ensure the booking end time is 1 to 4 hours after the booking start time
+  booking_end_time = booking_start_time + rand(1..4).hours
+
+  # Randomly select a comment, party count, and client ID
   comment = booking_comments.sample
   party_count = rand(1..10)
   restaurant_id = restaurant_galedo.id
   client_id = Client.pluck(:id).sample
 
+  # Create the booking record
   Booking.create!(
-    booking_start: booking_start,
-    booking_end: booking_end,
+    booking_start: booking_start_time,
+    booking_end: booking_end_time,
     comment: comment,
     party_count: party_count,
     restaurant_id: restaurant_id,
     client_id: client_id
   )
 end
+
 # booking_herique = Booking.create!(
 #   booking_start: DateTime.new(2024, 6, 12, 18, 0, 0),
 #   booking_end: DateTime.new(2024, 6, 10, 20, 0, 0),
