@@ -233,7 +233,7 @@ client_pedro_elias = Client.create!(
   first_name: "Pedro",
   last_name: "Elias",
   phone_number: "910663308",
-  ccr: 2.8
+  ccr: 4.3
 )
 
 # Create bookings pedro for galeto
