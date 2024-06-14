@@ -264,6 +264,15 @@ booking_3 = Booking.create!(
   client_id: client_pedro_elias.id
 )
 
+booking_4 = Booking.create!(
+  booking_start: DateTime.new(2023, 11, 20, 13, 0, 0),
+  booking_end: DateTime.new(2023, 11, 20, 15, 0, 0),
+  comment: "Family lunch",
+  party_count: 6,
+  restaurant_id: Restaurant.pluck(:id).sample,
+  client_id: client_pedro_elias.id
+)
+
 # Create pedro reviews for galeto
 Review.create!(
   punctuality: 30,
@@ -277,6 +286,13 @@ Review.create!(
   comment: "Client complained excessively about minor issues",
   attendance: true,
   booking_id: booking_2.id
+)
+
+Review.create!(
+  punctuality: 30,
+  comment: "Client got very drunk after 3 beers, proceeded to yell at our staff",
+  attendance: true,
+  booking_id: booking_4.id
 )
 
 Review.create!(
