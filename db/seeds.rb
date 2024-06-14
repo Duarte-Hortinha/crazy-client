@@ -226,7 +226,7 @@ restaurant_galedo = Restaurant.create!(
   email: "info@galeto.com",
   password: "1234567",
   name: "Galeto",
-  ccr_acceptance: 2.5,
+  ccr_acceptance: 4.1,
   capacity: 100
 )
 client_pedro_elias = Client.create!(
